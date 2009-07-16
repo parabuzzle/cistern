@@ -1,0 +1,9 @@
+Cistern 
+DEFINED: A receptacle for holding water or other liquid, especially a tank for catching and storing rainwater.
+
+Cistern is a log collection application.
+
+Cistern is a lightweight server that collects log events and displays them in a useful way. The application collects events from many different sources and allows viewing and graphing of that data for admins and developers.
+
+Cistern was born out of need for a place to allow developers to view logs on production machines without a need for the developer to have access to the production environment.
+
