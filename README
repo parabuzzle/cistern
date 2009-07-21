@@ -1,4 +1,4 @@
-Cistern 
+Cistern - [http://parabuzzle.github.com/cistern]
 DEFINED: A receptacle for holding water or other liquid, especially a tank for catching and storing rainwater.
 
 Cistern is a log collection application.
@@ -7,3 +7,4 @@ Cistern is a lightweight server that collects log events and displays them in a 
 
 Cistern was born out of need for a place to allow developers to view logs on production machines without a need for the developer to have access to the production environment.
 
+Cistern is licensed under the MIT license. Please see the LICENSE file provided in the latest source tree for latest license terms and usage.
