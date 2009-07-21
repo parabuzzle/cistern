@@ -2,15 +2,13 @@
 
 # TODO: Change this stuff
 ENV["RAILS_ENV"] ||= "production"
-#require 'socket'
-port = 12000
-bindip = "0.0.0.0"
-#server = UDPSocket.open
-#server.bind(nil, port)
+require 'yaml'
+config = YAML::load(File.open(File.dirname(__FILE__) + "/../../config/collectors.yml"))['udpcollector']
+port = config['port']
+bindip = config['listenip']
 
 require File.dirname(__FILE__) + "/../../config/environment.rb"
 ActiveRecord::Base.logger.info "Starting UDP log collector :: listening on #{bindip}:#{port}"
-#require 'collector.rb'
 
 
 Signal.trap("TERM") do 

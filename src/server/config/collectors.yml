@@ -1,1 +1,9 @@
 #should contain all the collector config params
+
+udpcollector:
+    port: 22222
+    listenip: 0.0.0.0
+    
+tcpcollector:
+    port: 9845
+    listenip: 0.0.0.0
