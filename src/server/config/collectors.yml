@@ -1,9 +1,26 @@
 #should contain all the collector config params
 
+#UDP log collection configuration
 udpcollector:
+    #The UDP port to listen on
     port: 22222
+    #The ip address to bind to 
+    #0.0.0.0 will bind to all available interfaces
     listenip: 0.0.0.0
-    
+
+#TCP log collection configuration
 tcpcollector:
+    #The TCP port to listen on
     port: 9845
+    #The ip address to bind to
+    #0.0.0.0 will bind to all available interfaces
+    listenip: 0.0.0.0
+
+#Admin server configuration
+# -- used for agent checkin and configuration
+adminlistener:
+    #The TCP port to listen on
+    port: 9850
+    #The ip address to bind to
+    #0.0.0.0 will bind to all available interfaces
     listenip: 0.0.0.0
