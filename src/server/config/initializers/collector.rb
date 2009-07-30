@@ -2,13 +2,13 @@ require 'digest/md5'
 module CollectionServer
 
    def post_init
-    ActiveRecord::Base.logger.info "-- someone connected to the collector"
+    port, ip = Socket.unpack_sockaddr_in(get_peername)
+    ActiveRecord::Base.logger.info "-- Collector connection established from #{ip}"
    end
 
    def receive_data(data)
-     n = 1
         (@buffer ||= BufferedTokenizer.new(delimiter = "__1_EE")).extract(data).each do |line|
-          start = Time.now.to_i
+          start = Time.now.to_f
           raw = line.split('__1_B')
           map = Hash.new
           raw.each do |keys|
@@ -24,19 +24,23 @@ module CollectionServer
           event.loglevel = map['level']
           event.payload = map['payload']
           event.save
-          puts "done #{Time.now.to_i - start} #{n + 1}"
+          puts "done #{Time.now.to_f - start}"
+          port, ip = Socket.unpack_sockaddr_in(get_peername)
+          puts "from host #{ip}"
+          
         end
       end
    
 
    def unbind
-    ActiveRecord::Base.logger.info "-- someone disconnected from the collector"
+     ActiveRecord::Base.logger.info "-- Collector connection closed by a peer"
    end
 end
 
 module CommandServer
   def post_init
-   ActiveRecord::Base.logger.info "-- someone connected to the command server"
+    port, ip = Socket.unpack_sockaddr_in(get_peername)
+    ActiveRecord::Base.logger.info "-- Command connection established from #{ip}"
   end
 
   def receive_data data
@@ -45,7 +49,7 @@ module CommandServer
   end
 
   def unbind
-   ActiveRecord::Base.logger.info "-- someone disconnected from the command server"
+   ActiveRecord::Base.logger.info "-- Command connection closed by a peer"
   end
 end
  
