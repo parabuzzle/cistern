@@ -1,7 +1,11 @@
 class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
-
+      t.column :payload, :string
+      t.column :staticentry_id, :string
+      t.column :type_id, :int
+      t.column :loglevel, :int
+      t.column :time, :int
       t.timestamps
     end
   end
