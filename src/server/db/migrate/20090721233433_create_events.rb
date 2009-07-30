@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.column :payload, :string
       t.column :staticentry_id, :string
+      t.column :agent_id, :int
       t.column :type_id, :int
       t.column :loglevel, :int
       t.column :time, :int

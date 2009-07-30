@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090730025618) do
+ActiveRecord::Schema.define(:version => 20090730154024) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -20,9 +20,17 @@ ActiveRecord::Schema.define(:version => 20090730025618) do
     t.datetime "updated_at"
   end
 
+  create_table "agents_logtypes", :force => true do |t|
+    t.integer  "logtype_id"
+    t.integer  "agent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "payload"
     t.string   "staticentry_id"
+    t.integer  "agent_id"
     t.integer  "type_id"
     t.integer  "loglevel"
     t.integer  "time"
@@ -32,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20090730025618) do
 
   create_table "logtypes", :force => true do |t|
     t.string   "name"
-    t.integer  "agent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
