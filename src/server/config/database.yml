@@ -3,7 +3,7 @@
 development:
   adapter: mysql
   database: cistern
-  pool: 5
+  pool: 50
   timeout: 5000
   username: root
   password:
@@ -20,7 +20,7 @@ test:
 production:
   adapter: mysql
   database: cistern
-  pool: 5
+  pool: 50
   timeout: 5000
   username: root
   password: 
