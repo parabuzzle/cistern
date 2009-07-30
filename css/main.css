@@ -60,3 +60,12 @@ hr {
 	text-align:center; 
 	padding-top:30px; 
 	}
+#caveat {
+	width:100%;
+	padding: 10px;
+	background: red;
+	color: white;
+	border: 3px solid black;
+	font-weight:bold;
+	clear:both;
+}
