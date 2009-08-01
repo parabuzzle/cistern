@@ -5,3 +5,35 @@
 #
 # two:
 #   column: value
+  
+validevent:
+    payload: agent1
+    staticentry_id: 
+    agent_id: 1
+    type_id:
+    loglevel: 0
+    time: 1249062105.06911
+    
+invalidmissingagent:
+    payload: agent1
+    staticentry_id: 
+    agent_id:
+    type_id:
+    loglevel: 0
+    time: 1249062105.06911
+
+invalidmissingloglevel:
+    payload: agent1
+    staticentry_id: 
+    agent_id: 1
+    type_id:
+    loglevel: 
+    time: 1249062105.06911
+    
+invalidmissingtime:
+    payload: agent1
+    staticentry_id: 
+    agent_id: 1
+    type_id:
+    loglevel: 0
+    time: 
