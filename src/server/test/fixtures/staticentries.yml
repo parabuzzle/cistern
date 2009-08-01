@@ -5,3 +5,8 @@
 #
 # two:
 #   column: value
+
+apachetrace:
+    id: 85d229332bf72d4539372498264300d6
+    logtype_id: 1
+    data: static data

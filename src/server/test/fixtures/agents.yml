@@ -5,14 +5,16 @@
 #
 # two:
 #   column: value
-valid:
-    name: validagent
+agent:
+    id: 1
+    name: agent
     hostname: agent1.corp.cistern.com
     port: 9845
     key: unused
     
-invalidhostname:
-    name: invalidagent
-    hostname: agent1.corp
-    port: 9845
-    key: unused
+#invalidhostname:
+#    id: 2
+#    name: invalidagent
+#    hostname: agent1.corp
+#    port: 9845
+#    key: unused

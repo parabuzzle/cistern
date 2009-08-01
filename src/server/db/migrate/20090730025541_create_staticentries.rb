@@ -5,7 +5,6 @@ class CreateStaticentries < ActiveRecord::Migration
       #t.column :hash_key, :string, :null => false
       t.column :logtype_id, :int
       t.column :data, :text
-      t.column :agent_id, :int
       t.timestamps
     end
     #add_index :staticentries, :hash_key

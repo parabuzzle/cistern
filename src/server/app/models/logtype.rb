@@ -2,6 +2,9 @@ class Logtype < ActiveRecord::Base
   has_and_belongs_to_many :agents
   has_many :staticentries
   has_many :events, :through => :staticentries
+  
+  #Validations
+  validates_presence_of :name
 
   
   def add(agent)

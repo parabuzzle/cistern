@@ -6,34 +6,33 @@
 # two:
 #   column: value
   
-validevent:
+event1:
     payload: agent1
-    staticentry_id: 
+    staticentry_id: 85d229332bf72d4539372498264300d6
     agent_id: 1
-    type_id:
     loglevel: 0
     time: 1249062105.06911
     
-invalidmissingagent:
-    payload: agent1
-    staticentry_id: 
-    agent_id:
-    type_id:
-    loglevel: 0
-    time: 1249062105.06911
-
-invalidmissingloglevel:
-    payload: agent1
-    staticentry_id: 
-    agent_id: 1
-    type_id:
-    loglevel: 
-    time: 1249062105.06911
-    
-invalidmissingtime:
-    payload: agent1
-    staticentry_id: 
-    agent_id: 1
-    type_id:
-    loglevel: 0
-    time: 
+#invalidmissingagent:
+#    payload: agent1
+#    staticentry_id: 
+#    agent_id:
+#    type_id:
+#    loglevel: 0
+#    time: 1249062105.06911
+#
+#invalidmissingloglevel:
+#    payload: agent1
+#    staticentry_id: 
+#    agent_id: 1
+#    type_id:
+#    loglevel: 
+#    time: 1249062105.06911
+#    
+#invalidmissingtime:
+#    payload: agent1
+#    staticentry_id: 
+#    agent_id: 1
+#    type_id:
+#    loglevel: 0
+#    time: 
