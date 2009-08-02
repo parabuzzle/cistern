@@ -1,4 +1,16 @@
 #This initializer is used to pull in modules and extentions in other directories. (The include functions in envrionment.rb is crap)
 require 'digest/md5'
-require 'lib/modules/collection_server'
-require 'lib/modules/command_server'
+require RAILS_ROOT + '/lib/modules/collection_server.rb'
+require RAILS_ROOT + '/lib/modules/command_server.rb'
+
+#Mixin for the string class to add a validity check for log events based on the checksum appended to buffered received data
+class String
+  def valid?
+    part = self.split('__1_CC')
+    if Digest::MD5.hexdigest(part[0]) == part[1]
+      return true
+    else
+      return false
+    end
+  end
+end

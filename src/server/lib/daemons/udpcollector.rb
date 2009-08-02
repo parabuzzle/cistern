@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-# TODO: Change this stuff
 ENV["RAILS_ENV"] ||= "production"
 require 'yaml'
 config = YAML::load(File.open(File.dirname(__FILE__) + "/../../config/collectors.yml"))['udpcollector']

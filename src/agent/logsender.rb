@@ -1,25 +1,60 @@
 require 'socket'
 require 'yaml'
+require 'digest/md5'
 include Socket::Constants
+
+@break = "__1_BB"
+@value = "__1_VV"
+@checksum = "__1_CC"
+
 
 def close_tx(socket)
   socket.write("__1_EE")
+end
+def newvalbr(socket)
+  socket.write("__1_BB")
+end
+def valbr(socket)
+  socket.write("__1_VV")
+end
+def checkbr(socket)
+  socket.write("__1_CC")
 end
 
 socket = Socket.new( AF_INET, SOCK_STREAM, 0 )
 sockaddr = Socket.pack_sockaddr_in( 9845, '127.0.0.1' )
 socket.connect( sockaddr )
 
-#Write staticentry
+#Things you need...
+#data - static data
+#logtype_id - logtype
+#loglevel - The log level of the event
+#time - the original time of the event
+#payload - The dynamic data for the event (format - NAME=value)
+#agent_id - The reporting agent's id
+#
+#The entire sting should have a checksum or it will be thrown out
 
-socket.write( "data=this is a log entry for <<NAME>>__1_B agent=1__1_Blogtype=apache__1_B" )
-socket.write("level=0__1_Btime=1248931696__1_Bpayload=PrimeTime__1_B")
-close_tx(socket)
+event = Hash.new
+event.store("key", "123456")
+event.store("data","This is a log entry for <<<NAME>>>")
+event.store("logtype_id", 1)
+event.store("loglevel", 0)
+event.store("time", Time.now.to_f)
+event.store("payload", "NAME=TesterApp")
+event.store("agent_id", 1)
 
-socket.write( "data=this is a log entry for <<NAME>>__1_B agent=1__1_Blogtype=apache__1_B" )
-socket.write("level=0__1_Btime=1248931890__1_Bpayload=PrimeTime__1_B ")
-close_tx(socket)
+e = String.new
+event.each do |key, val|
+  e = e + key.to_s + @value + val.to_s + @break
+end
+puts e
+e = e + @checksum + Digest::MD5.hexdigest(e) + "__1_EE"
+puts e
+socket.write(e)
+socket.write(e)
+socket.write(e)
 
-socket.write( "data=this is a log entry for <<NAME>>__1_Bagent=0__1_Blogtype=apache__1_B" )
-socket.write("level=0__1_Btime=1248931698__1_Bpayload=Builder__1_B ")
-close_tx(socket)
+
+
+
