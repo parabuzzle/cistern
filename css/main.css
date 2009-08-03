@@ -69,3 +69,10 @@ hr {
 	font-weight:bold;
 	clear:both;
 }
+#screenshots {
+	float:right;
+}
+
+#screenshots img {
+	border: 2px solid #000;
+}
