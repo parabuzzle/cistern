@@ -41,7 +41,7 @@ event.store("data","This is a log entry for <<<NAME>>>")
 event.store("logtype_id", 1)
 event.store("loglevel", 0)
 event.store("time", Time.now.to_f)
-event.store("payload", "NAME=TesterApp")
+event.store("payload", "NAME=Biff")
 event.store("agent_id", 1)
 
 e = String.new

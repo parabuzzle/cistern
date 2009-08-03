@@ -2,7 +2,7 @@
 <div id="eventlist">
 	<ul>
 	<% for event in @events do %>
-		<li><%= if params[:withepoch] then event.time else Time.at(event.time) end %> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
+		<li><%= if params[:withepoch] then event.time else Time.at(event.time.to_f) end %> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
 	<%end%>
 	</ul>
 </div>

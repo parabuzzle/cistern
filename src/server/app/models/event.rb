@@ -8,6 +8,6 @@ class Event < ActiveRecord::Base
   default_scope :order => 'time DESC'
   
   #Validations
-  validates_presence_of :agent_id, :loglevel, :time
+  validates_presence_of :agent_id, :loglevel, :time, :logtype_id
    
 end

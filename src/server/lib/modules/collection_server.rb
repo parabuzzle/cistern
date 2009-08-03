@@ -26,7 +26,7 @@ module CollectionServer
     static = Logtype.find(map['logtype_id']).staticentries.new
     static.data = map['data']
     static.save
-    static = Staticentry.find_by_id(Digest::MD5.hexdigest(map['data']))
+    static = Staticentry.find_by_id(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
     event = static.events.new
     event.time = map['time']
     event.loglevel = map['loglevel']

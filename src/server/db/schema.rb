@@ -31,9 +31,8 @@ ActiveRecord::Schema.define(:version => 20090803050441) do
     t.string   "payload"
     t.string   "staticentry_id"
     t.integer  "agent_id"
-    t.integer  "type_id"
     t.integer  "loglevel"
-    t.integer  "time"
+    t.string   "time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "logtype_id"
@@ -48,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20090803050441) do
   create_table "staticentries", :force => true do |t|
     t.integer  "logtype_id"
     t.text     "data"
-    t.integer  "agent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

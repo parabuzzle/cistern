@@ -1,17 +1,21 @@
 <h1>All Events for <%=@agent.name%></h1>
 <div id="filter">
-	Filter by logtype: 
-	<% for type in @agent.logtypes.all do %>
-		<%= link_to( type.name, :logtype => type.id )%> 
+	<% if params[:logtype]%>
+		Current filter: <%= Logtype.find(params[:logtype]).name%>
+	<%else%>
+		Filter by logtype: 
+		<% for type in @agent.logtypes.all do %>
+			<%= link_to( type.name, :logtype => type.id, :withepoch => params[:withepoch] )%> 
+		<%end%>
 	<%end%>
 	<div class="adendem">
-		<%= link_to("Clear filter", :logtype => nil)%>
+		<%= link_to("Clear filter", :logtype => nil, :withepoch => params[:withepoch])%>
 	</div>
 </div>
 <div id="eventlist">
 	<ul>
 	<% for event in @events do %>
-		<li><%= if params[:withepoch] then event.time else Time.at(event.time) end %> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
+		<li><%= if params[:withepoch] then event.time else Time.at(event.time.to_f) end %> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
 	<%end%>
 	</ul>
 </div>
@@ -27,7 +31,7 @@
 	<%=link_to "200", :withepoch => params[:withepoch], :page => 1, :perpage => "200" %>
 </div>
 <%if params[:withepoch]%>
-	<div class="adendem"><%=link_to "show regular time", :withepoch => nil, :page => params[:page], :perpage => params[:perpage] %></div>
+	<div class="adendem"><%=link_to "show regular time", :withepoch => nil, :page => params[:page], :perpage => params[:perpage], :logtype => params[:logtype] %></div>
 <%else%>
-	<div class="adendem"><%=link_to "show epoch time", :withepoch => 1, :page => params[:page], :perpage => params[:perpage] %></div>
+	<div class="adendem"><%=link_to "show epoch time", :withepoch => 1, :page => params[:page], :perpage => params[:perpage], :logtype => params[:logtype] %></div>
 <%end%>

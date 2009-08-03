@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.column :staticentry_id, :string
       t.column :agent_id, :int
       t.column :loglevel, :int
-      t.column :time, :int
+      t.column :time, :string
       t.timestamps
     end
   end
