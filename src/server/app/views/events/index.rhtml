@@ -1,0 +1,17 @@
+<h1>Events Statistics</h1>
+<div class="adendem">Select the log events you would like to see:</div>
+<h2>Logtypes</h2>
+<ul>
+	<% for type in @logtypes do%>
+		 <li><%= link_to(type.name, :action => 'show', :logtype => type.id)%> :: <%=type.events.count %> total events</ul>
+	<%end%>
+</ul>
+
+<h2>Agents</h2>
+<ul>
+	<% for agent in @agents do%>
+		<li><%=link_to(agent.name, :action => 'show', :agent => agent.id)%> [<%=agent.hostname%>] :: <%= agent.events.count%> total events</li>
+	<%end%>
+</ul>
+
+<h3><%= link_to('Show all events', :action => 'show')%></h3>

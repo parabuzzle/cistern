@@ -1,0 +1,70 @@
+<%starttime = Time.now.to_f %>
+<!DOCTYPE HTML PUBLIC "!//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Cistern :: <%= @title %></title>
+
+<%= stylesheet_link_tag "main" %>
+<%= javascript_include_tag "jquery.min"%>
+<%= javascript_include_tag "application"%>
+</head>
+ 
+<body>
+	<div id="header">
+		<div id="logo">Cistern</div>
+		<div id="search	">
+			Search all Events
+			<% form_for :search do |form| %>
+				<div><%= form.text_field :data, :size => 20, :class => "searchbox" %></div>
+				<div class="adendem">advanced</div>
+			<%end%>
+		</div>
+	</div> <!-- header -->
+	<div id="container">
+		<div id="main">
+			
+			
+			<%= @content_for_layout %>
+			
+ 		</div> <!-- main -->
+		<div id="footer">
+			Footer
+		</div> <!-- footer -->
+
+		<% if ENV["RAILS_ENV"] == "development" #call this block if in dev mode %>
+		<!-- Dev stuff -->
+		<div id="debug">
+		<a href='#' onclick="$('#params_debug_info').toggle();return false">params</a> |
+		<a href='#' onclick="$('#session_debug_info').toggle();return false">session</a> |
+		<a href='#' onclick="$('#env_debug_info').toggle();return false">env</a> |
+		<a href='#' onclick="$('#request_debug_info').toggle();return false">request</a>
+		<fieldset id="params_debug_info" class="debug_info" style="display:none">
+		<legend>params</legend>
+		<%= debug(params) %>
+		</fieldset>
+		<fieldset id="session_debug_info" class="debug_info" style="display:none">
+		<legend>session</legend>
+		<%= debug(session) %>
+		</fieldset>
+		  <fieldset id="env_debug_info" class="debug_info" style="display:none">
+		<legend>env</legend>
+		<%= debug(request.env) %>
+		</fieldset>
+		<fieldset id="request_debug_info" class="debug_info" style="display:none">
+		<legend>request</legend>
+		<%= debug(request) %>
+		</fieldset>
+		</div>
+		<!-- end Dev mode only stuff -->
+		<% end %>
+	</div> <!-- container -->
+ 
+</body>
+</html>
+<% rtime = Time.now.to_f - starttime%>
+ 
+<% if ENV["RAILS_ENV"] == "development"%>
+<%= [rtime*1000].to_s.to_i %> ms
+<%else%>
+<!-- <%= rtime*1000 %> -->
+<%end%>

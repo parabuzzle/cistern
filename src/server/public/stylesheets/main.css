@@ -1,0 +1,68 @@
+body {
+	background: #fff;
+	color: #000;
+	margin: 0px; 
+	padding: 0px;
+	color: #333;
+	font-weight:bold;
+	font-family: serif;
+}
+
+#container {
+	padding: 2px;
+	margin: auto;
+	width: 900px;
+}
+
+#header {
+	width: 100%;
+	margin: 0px;
+	height: 95px;
+	background: #333;
+	border-bottom: solid 6px #000;
+	color:#fff;
+}
+
+#logo {
+	position: absolute;
+	padding-top: 20px;
+	padding-left: 45px;
+	font-weight:bold;
+	font-size: 55px;
+	color: #fff;
+}
+
+#search {
+	text-align: right;
+	padding-top: 20px;
+	padding-right: 50px;
+}
+
+.searchbox {
+	background: #663366;
+	border: 1px solid #000;
+	color: #fff;
+	font-size: 20px;
+	padding: 2px;
+	font-weight: none;
+}
+
+#main {
+	min-height: 500px;
+	_height: 500px; /* IE min-height hack */
+}
+
+#footer {
+	text-align: center;
+	width: 900px;
+}
+
+.adendem {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.in20 {
+	padding-left: 20px;
+	padding-right: 20px;
+}
