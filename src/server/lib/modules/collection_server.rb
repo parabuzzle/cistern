@@ -31,6 +31,7 @@ module CollectionServer
     event.time = map['time']
     event.loglevel = map['loglevel']
     event.payload = map['payload']
+    event.logtype_id = map['logtype_id']
     event.agent_id = map['agent_id']
     if check_key(Agent.find(map['agent_id']), map['key'])
       event.save

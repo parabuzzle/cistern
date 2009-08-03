@@ -1,0 +1,10 @@
+<h1>Agents</h1>
+
+<ul>
+	<% for agent in @agents do%>
+		<li><%=link_to(agent.name, :action => 'show', :id => agent.id)%> [<%=agent.hostname%>] :: <%= agent.events.count%> total events</li>
+	<%end%>
+</ul>
+<div class="pagination">
+	<%= will_paginate @event %>
+</div>

@@ -21,15 +21,15 @@ module ApplicationHelper
   end
   
   def displaylevel(level)
-    if level = 0
+    if level == 0
       level = "FATAL"
-    elsif level = 1
+    elsif level == 1
       level = "ERROR"
-    elsif level = 2
+    elsif level == 2
       level = "WARN"
-    elsif level = 3
+    elsif level == 3
       level = "INFO"
-    elsif level = 4
+    elsif level == 4
       level = "DEBUG"
     else
       level = "UNKNOWN"

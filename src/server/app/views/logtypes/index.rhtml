@@ -1,0 +1,10 @@
+<h1>Logtypes</h1>
+
+<ul>
+	<% for type in @logtypes do%>
+		<li><%=link_to(type.name, :action => 'show', :id => type.id)%> :: <%= type.events.count%> total events</li>
+	<%end%>
+</ul>
+<div class="pagination">
+	<%= will_paginate @logtypes %>
+</div>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090730154024) do
+ActiveRecord::Schema.define(:version => 20090803050441) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20090730154024) do
     t.integer  "time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "logtype_id"
   end
 
   create_table "logtypes", :force => true do |t|

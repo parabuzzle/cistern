@@ -58,6 +58,11 @@ a:hover {
 	font-weight: none;
 }
 
+#eventlist {
+	min-height: 350px;
+	_height: 350px;
+}
+
 #topnav a {
 	background: #000;
 	padding: 4px;
@@ -65,6 +70,9 @@ a:hover {
 	padding-left: 6px;
 	padding-right: 6px;
 	color: #fff;
+	border-left: solid 2px #000033;
+	border-right: solid 2px #000033;
+	border-bottom: solid 2px #000033;
 }
 #topnav a:hover {
 	background: #666;
@@ -73,6 +81,9 @@ a:hover {
 	padding-left: 6px;
 	padding-right: 6px;
 	color: #fff;
+	border-left: solid 2px #000033;
+	border-right: solid 2px #000033;
+	border-bottom: solid 2px #000033;
 }
 .topnav {
 	background: #666;
@@ -81,6 +92,9 @@ a:hover {
 	padding-left: 6px;
 	padding-right: 6px;
 	color: #fff;
+	border-left: solid 2px #000033;
+	border-right: solid 2px #000033;
+	border-bottom: solid 2px #000033;
 }
 #topnav {
 	font-size: 20px;
@@ -92,8 +106,8 @@ a:hover {
 }
 
 #main {
-	min-height: 500px;
-	_height: 500px; /* IE min-height hack */
+	min-height: 400px;
+	_height: 400px; /* IE min-height hack */
 }
 
 #footer {

@@ -1,9 +1,20 @@
-<h1>All Events</h1>
-<ul>
-<% for event in @events do %>
-	<li><%= if params[:withepoch] then event.time else Time.at(event.time) end %> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
-<%end%>
-</ul>
+<h1>All Events for <%=@agent.name%></h1>
+<div id="filter">
+	Filter by logtype: 
+	<% for type in @agent.logtypes.all do %>
+		<%= link_to( type.name, :logtype => type.id )%> 
+	<%end%>
+	<div class="adendem">
+		<%= link_to("Clear filter", :logtype => nil)%>
+	</div>
+</div>
+<div id="eventlist">
+	<ul>
+	<% for event in @events do %>
+		<li><%= if params[:withepoch] then event.time else Time.at(event.time) end %> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
+	<%end%>
+	</ul>
+</div>
 
 <div class="pagination">
 	<%= will_paginate @event %>
@@ -20,4 +31,3 @@
 <%else%>
 	<div class="adendem"><%=link_to "show epoch time", :withepoch => 1, :page => params[:page], :perpage => params[:perpage] %></div>
 <%end%>
-
