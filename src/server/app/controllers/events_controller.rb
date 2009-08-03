@@ -10,8 +10,8 @@ class EventsController < ApplicationController
   def show
     @title = "All Events"
     #@events = Array.new
-    events = Event.all
-    @events = rebuildevents(events)
+    @event = Event.paginate :all, :per_page => params[:perpage], :page => params[:page]
+    @events = rebuildevents(@event)
   end
   
 end

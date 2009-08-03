@@ -21,6 +21,9 @@
 		</div>
 	</div> <!-- header -->
 	<div id="container">
+		<div id="topnav">
+			<%= link_to("Events", :controller => "events", :action => "index")%>
+		</div>
 		<div id="main">
 			
 			
@@ -28,7 +31,8 @@
 			
  		</div> <!-- main -->
 		<div id="footer">
-			Footer
+			Copyright &copy; 2009 Mike Heijmans
+			<div class="adendum">powered by <a href="http://parabuzzle.github.com/cistern">Cistern</a></div>
 		</div> <!-- footer -->
 
 		<% if ENV["RAILS_ENV"] == "development" #call this block if in dev mode %>

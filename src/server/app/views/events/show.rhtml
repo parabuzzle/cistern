@@ -1,6 +1,23 @@
 <h1>All Events</h1>
 <ul>
 <% for event in @events do %>
-	<li><%= Time.at(event.time)%> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
+	<li><%= if params[:withepoch] then event.time else Time.at(event.time) end %> : <%= displaylevel(event.loglevel)%> <%=event.payload%></li>
 <%end%>
 </ul>
+<%if params[:withepoch]%>
+	<div class="adendem"><%=link_to "show regular time", :withepoch => nil, :page => params[:page], :perpage => params[:perpage] %></div>
+<%else%>
+	<div class="adendem"><%=link_to "show epoch time", :withepoch => 1, :page => params[:page], :perpage => params[:perpage] %></div>
+<%end%>
+
+<div class="pagination">
+	<%= will_paginate @event %>
+</div>
+<div class="adendem">
+	Records per page: 
+	<%=link_to "20", :withepoch => params[:withepoch], :page => 1, :perpage => "20" %> | 
+	<%=link_to "50", :withepoch => params[:withepoch], :page => 1, :perpage => "50" %> | 
+	<%=link_to "100", :withepoch => params[:withepoch], :page => 1, :perpage => "100" %> | 
+	<%=link_to "200", :withepoch => params[:withepoch], :page => 1, :perpage => "200" %>
+</div>
+
