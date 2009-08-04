@@ -29,7 +29,7 @@ module CollectionServer
     static = Staticentry.find_by_id(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
     event = static.events.new
     event.time = map['time']
-    event.loglevel = map['loglevel']
+    event.loglevel_id = map['loglevel_id']
     event.payload = map['payload']
     event.logtype_id = map['logtype_id']
     event.agent_id = map['agent_id']

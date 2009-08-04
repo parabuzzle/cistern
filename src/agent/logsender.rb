@@ -36,10 +36,10 @@ socket.connect( sockaddr )
 #The entire sting should have a checksum or it will be thrown out
 
 event = Hash.new
-event.store("key", "123456")
-event.store("data","This is a log entry for <<<NAME>>>")
+event.store("key", "111")
+event.store("data","Error log in <<<NAME>>> module")
 event.store("logtype_id", 1)
-event.store("loglevel", 0)
+event.store("loglevel_id", 2)
 event.store("time", Time.now.to_f)
 event.store("payload", "NAME=Biff")
 event.store("agent_id", 1)
