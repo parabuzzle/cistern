@@ -15,12 +15,3 @@ tcpcollector:
     #The ip address to bind to
     #0.0.0.0 will bind to all available interfaces
     listenip: 0.0.0.0
-
-#Admin server configuration
-# -- used for agent checkin and configuration
-commandlistener:
-    #The TCP port to listen on
-    port: 9850
-    #The ip address to bind to
-    #0.0.0.0 will bind to all available interfaces
-    listenip: 0.0.0.0

@@ -1,3 +1,6 @@
 *.log
 *.pid
 *.sqlite3
+src/server/config/database.yml
+src/server/config/daemons.yml
+src/server/config/collectors.yml
