@@ -2,7 +2,7 @@
 
 <ul>
 	<% for agent in @agents do%>
-		<li><%=link_to(agent.name, :action => 'show', :id => agent.id)%> [<%=agent.hostname%>] :: <%= agent.events.count%> total events</li>
+		<li><%=link_to(agent.name, :action => 'show', :id => agent.id)%> [<%=agent.hostname%>] <%=link_to("edit", :action => 'edit', :id => agent.id)%> :: <%= agent.events.count%> total events</li>
 	<%end%>
 </ul>
 <div class="pagination">

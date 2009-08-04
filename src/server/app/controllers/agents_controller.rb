@@ -16,4 +16,50 @@ class AgentsController < ApplicationController
     @events = rebuildevents(@event)
   end
   
+  def new
+    if request.post?
+      @agent = Agent.new(params[:agent])
+      @agent.key = Digest::MD5.hexdigest(@agent.hostname + Time.now.to_s)
+      if @agent.save
+        flash[:notice] = "Agent #{@agent.name} added"
+        redirect_to :action => "index"
+      else
+        flash[:error] = "There were errors creating your agent"
+      end
+    else
+      @title = "Create New Agent"
+    end
+  end
+  
+  def edit
+    @agent = Agent.find(params[:id])
+    if request.post?
+      @agent.update_attributes(params[:agent])
+      if @agent.save
+        flash[:notice] = "Agent #{@agent.name} updated"
+        redirect_to :action => "index"
+      else
+        flash[:error] = "There were errors updating your agent"
+      end
+    else
+      @title = "Edit #{@agent.name}"
+    end
+  end
+  
+  def delete
+    @agent = params[:id]
+    if request.post?
+      if @agent.destroy
+        flash[:notice] = "Agent deleted"
+        redirect_to :action => "index"
+      else
+        flash[:error] = "Error trying to delete agent"
+        redirect_to :action => "index"
+      end
+    else
+      flash[:error] = "Poking around is never a good idea"
+      redirect_to :action => "index"
+    end
+  end
+  
 end

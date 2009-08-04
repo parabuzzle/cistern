@@ -1,0 +1,26 @@
+<h1>Create a New Agent</h1>
+<%= error_messages_for 'agent' %>
+<div id="form">
+	
+	<table width="100%">
+		<% form_for :agent do |f|%>
+			<tr>
+				<td>Name:</td> 
+				<td align="right"><%= f.text_field :name, :class => "fbox"%></td>
+			</tr>
+			<tr>
+				<td>Hostname:</td>
+				<td align="right"><%= f.text_field :hostname, :class => "fbox"%></td>
+			</tr>
+			<tr>
+				<td>Port:</td>
+				<td align="right"><%= f.text_field :port, :class => "fbox", :value => "9845"%></td>
+			</tr>
+			<tr>
+				<td><%= submit_tag "Add Agent", :class => "submitbutton" %></td>
+				<td></td>
+			</tr>
+		<%end%>
+	</table>
+					
+</div>

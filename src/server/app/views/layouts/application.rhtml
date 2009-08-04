@@ -25,8 +25,12 @@
 			<%= link_to("Events", :controller => "events", :action => "index")%> <%= link_to("Agents", :controller => "agents", :action => "index")%> <%= link_to("Logtypes", :controller => "logtypes", :action => "index")%>
 		</div>
 		<div id="main">
-			
-			
+			<% if flash[:notice]%>
+				<div id="notice"><%=flash[:notice]%></div>
+			<%end%>
+			<%if flash[:error]%>
+				<div id="error"><%=flash[:error]%></div>
+			<%end%>
 			<%= @content_for_layout %>
 			
  		</div> <!-- main -->
