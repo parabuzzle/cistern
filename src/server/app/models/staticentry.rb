@@ -1,6 +1,7 @@
 class Staticentry < ActiveRecord::Base
   has_many :events
   belongs_to :logtype
+  has_many :loglevels, :through => :entries
   
   #TODO: Make the id include the logtype to prevent hash collision cross logtypes
   
