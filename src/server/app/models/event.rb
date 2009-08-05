@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  acts_as_ferret
+  
   belongs_to :staticentry
   belongs_to :agent
   belongs_to :loglevel

@@ -4,3 +4,4 @@
 src/server/config/database.yml
 src/server/config/daemons.yml
 src/server/config/collectors.yml
+src/server/index
