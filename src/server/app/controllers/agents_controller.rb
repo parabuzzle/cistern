@@ -7,6 +7,9 @@ class AgentsController < ApplicationController
   
   def show
     @agent = Agent.find(params[:id])
+    if request.post?
+      redirect_to :action => "search", :id => params[:id], :aquery => params[:search][:data]
+    end
     @title = "All Events for #{@agent.name}"
     if params[:logtype].nil? and params[:loglevel].nil?
       @event = @agent.events.paginate :all, :per_page => params[:perpage], :page => params[:page]
@@ -18,6 +21,17 @@ class AgentsController < ApplicationController
       @event = @agent.events.paginate :all, :per_page => params[:perpage], :page => params[:page], :conditions => "logtype_id = '#{params[:logtype]}' and loglevel_id <= '#{params[:loglevel]}'"
     end
     @events = rebuildevents(@event)
+  end
+  
+  def search
+    if params[:aquery].nil?
+      redirect_to :action => 'show', :id => params[:id]
+    else
+      @title = "Search Results"
+      @agent = Agent.find(params[:id])
+      @total = @agent.events.find_with_ferret(params[:aquery]).length
+      @results = @agent.events.paginate(params[:aquery], {:finder => "find_with_ferret", :total_entries => @total}.merge({:page => params[:page], :per_page => params[:per_page]}))
+    end
   end
   
   def new

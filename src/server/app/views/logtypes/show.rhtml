@@ -1,3 +1,12 @@
+<div class="rightsearch">
+	<div>
+		<% form_for :search, :url => { :id => params[:id]} do |form| %>
+			<div>Search within Logtype</div>
+			<div><%= form.text_field :data, :size => 20, :class => "minisearchbox" %> </div>
+		<%end%>
+	</div>
+</div>
+<div class="clear"></div>
 <h1>All Events for <%=@logtype.name%></h1>
 <div id="filter">
 		<a href='#' onclick="$('.agentinfo').toggle();return false">View by Agent</a>
@@ -7,12 +16,17 @@
 			<%end%>
 		</div>
 </div>
-<div id="eventlist">
-	<ul>
-	<% for event in @events do %>
-		<li><%= event.agent.name %> : <%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %> : <%= event.loglevel.name %> <%=event.payload%></li>
-	<%end%>
-	</ul>
+<div id="events">
+<% for event in @events do %>
+	<div class="event">
+		<a href="#" onclick="$('.eventinfo<%=event.id%>').toggle();return false"><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %></a> : <%= link_to(event.loglevel.name, :action => "show", :loglevel => event.loglevel.id, :withepoch => params[:withepoch])%> :: 
+		<%=event.payload%>
+		<div class="eventinfo<%=event.id%>" style="display:none; background:#FF9; border:1px solid #000; padding:5px; width:50%">
+			<div class="info">Agent: <%=link_to(event.agent.name, :controller => "agents", :action => "show", :id => event.agent.id)%></div>
+			<div class="info">Static Entry Id: <%=event.staticentry_id%></div>
+		</div>
+	</div>
+<%end%>
 </div>
 
 <div class="pagination">

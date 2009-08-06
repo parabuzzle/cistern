@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   include ApplicationHelper
   include SearchHelper
   
+  
   def index
     @title = "Search for Events"
     if request.post?
@@ -24,28 +25,8 @@ class SearchController < ApplicationController
       redirect_to :action => 'index'
     else
       @title = "Search Results"
-      if !params[:loglevel].nil?
-        loglevel = params[:loglevel]
-      end
-      if !params[:logtype].nil?
-        logtype = params[:logtype]
-      end
-      if !params[:agent].nil?
-        agent = params[:agent]
-      end
-      #@results = Agent.find(agent).events.find_with_ferret(params[:query])
-      r = Event.find_with_ferret(params[:query])
-      @results = Array.new
-      if !agent.nil?
-        r = filter_agent(r,agent.to_i)
-      end
-      if !logtype.nil?
-        r = filter_logtype(r,logtype.to_i)
-      end
-      if !loglevel.nil?
-        r = filter_loglevel(r,loglevel.to_i)
-      end
-      @results = r
+      @total = Event.total_hits(params[:query])
+      @results = Event.paginate(params[:query], {:finder => "find_with_ferret", :total_entries => @total}.merge({:page => params[:page], :per_page => params[:per_page]}))
     end
   end
   

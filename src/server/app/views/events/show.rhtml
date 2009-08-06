@@ -1,24 +1,35 @@
 <h1>All Events</h1>
-<ul>
-<% for event in @events do %>
-	<li><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %> : <%= event.loglevel.name%> <%=event.payload%></li>
+<%unless params[:loglevel].nil?%>
+<div class="adendem"><%=link_to("clear filters", :action => "show", :loglevel => nil)%></div>
 <%end%>
-</ul>
+<div id="events">
+<% for event in @events do %>
+	<div class="event">
+		<a href="#" onclick="$('.eventinfo<%=event.id%>').toggle();return false"><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %></a> : <%= link_to(event.loglevel.name, :action => "show", :loglevel => event.loglevel.id, :withepoch => params[:withepoch])%> :: 
+		<%=event.payload%>
+		<div class="eventinfo<%=event.id%>" style="display:none; background:#FF9; border:1px solid #000; padding:5px; width:50%">
+			<div class="info">Agent: <%=link_to(event.agent.name, :controller => "agents", :action => "show", :id => event.agent.id)%></div>
+			<div class="info">Logtype: <%=link_to(event.staticentry.logtype.name, :controller => "logtypes", :action => "show", :id => event.staticentry.logtype.id)%></div>
+			<div class="info">Static Entry Id: <%=event.staticentry_id%></div>
+		</div>
+	</div>
+<%end%>
+</div>
 
 <div class="pagination">
 	<%= will_paginate @event %>
 </div>
 <div class="adendem">
 	Records per page: 
-	<%=link_to "20", :withepoch => params[:withepoch], :page => 1, :perpage => "20" %> | 
-	<%=link_to "50", :withepoch => params[:withepoch], :page => 1, :perpage => "50" %> | 
-	<%=link_to "100", :withepoch => params[:withepoch], :page => 1, :perpage => "100" %> | 
-	<%=link_to "200", :withepoch => params[:withepoch], :page => 1, :perpage => "200" %>
+	<%=link_to "20", :loglevel => params[:loglevel], :withepoch => params[:withepoch], :page => 1, :perpage => "20" %> | 
+	<%=link_to "50", :loglevel => params[:loglevel], :withepoch => params[:withepoch], :page => 1, :perpage => "50" %> | 
+	<%=link_to "100", :loglevel => params[:loglevel], :withepoch => params[:withepoch], :page => 1, :perpage => "100" %> | 
+	<%=link_to "200", :loglevel => params[:loglevel], :withepoch => params[:withepoch], :page => 1, :perpage => "200" %>
 </div>
 <%if params[:withepoch]%>
-	<div class="adendem"><%=link_to "show regular time", :withepoch => nil, :page => params[:page], :perpage => params[:perpage] %></div>
+	<div class="adendem"><%=link_to "show regular time", :withepoch => nil, :loglevel => params[:loglevel], :page => params[:page], :perpage => params[:perpage] %></div>
 <%else%>
-	<div class="adendem"><%=link_to "show epoch time", :withepoch => 1, :page => params[:page], :perpage => params[:perpage] %></div>
+	<div class="adendem"><%=link_to "show epoch time", :withepoch => 1, :loglevel => params[:loglevel], :page => params[:page], :perpage => params[:perpage] %></div>
 <%end%>
 
 <div class="adendem"><%=link_to "view by agent", :controller => 'agents', :action => "index" %> | <%=link_to "view by logtype", :controller => 'logtypes', :action => 'index' %></div>

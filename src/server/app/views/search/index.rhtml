@@ -2,8 +2,8 @@
 
 <div>
 	<% form_for :search do |form| %>
-		<div><%= form.text_field :data, :size => 20, :class => "searchbox" %> <%= submit_tag "Findit!", :class => "submitbutton", :action => 'show' %></div>
-		<div class="adendem"><a href='#' onclick="$('.advancedsearch').toggle();return false">advanced</a></div>
+		<div><%= form.text_field :data, :size => 20, :class => "mainsearchbox" %> <%= submit_tag "Findit!", :class => "searchsubmitbutton", :action => 'show' %></div>
+		<!--<div class="adendem"><a href='#' onclick="$('.advancedsearch').toggle();return false">advanced</a></div>
 		<div class="advancedsearch">
 			<div class="agent">Search within Logtype</div>
 				<div>
@@ -26,6 +26,6 @@
 				<%end%>
 				<%= radio_button_tag "loglevel_ids", "off"%> all
 			</div>
-		</div>
+		</div>-->
 	<%end%>
 </div>

@@ -14,7 +14,6 @@ class CreateEvents < ActiveRecord::Migration
     add_index :events, :etime
     add_index :events, :agent_id
     add_index :events, :staticentry_id
-    
   end
 
   def self.down

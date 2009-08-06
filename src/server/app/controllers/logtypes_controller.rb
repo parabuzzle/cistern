@@ -7,6 +7,9 @@ class LogtypesController < ApplicationController
   
   def show
     @logtype = Logtype.find(params[:id])
+    if request.post?
+      redirect_to :action => "search", :id => params[:id], :aquery => params[:search][:data]
+    end
     @title = "All Events for #{@logtype.name}"
     if params[:loglevel].nil?
       @event = @logtype.events.paginate :all, :per_page => params[:perpage], :page => params[:page]
@@ -14,6 +17,17 @@ class LogtypesController < ApplicationController
       @event = @logtype.events.paginate :all, :per_page => params[:perpage], :page => params[:page], :conditions => "loglevel_id <= '#{params[:loglevel]}'"
     end
     @events = rebuildevents(@event)
+  end
+  
+  def search
+    if params[:aquery].nil?
+      redirect_to :action => 'show', :id => params[:id]
+    else
+      @title = "Search Results"
+      @logtype = Logtype.find(params[:id])
+      @total = @logtype.events.find_with_ferret(params[:aquery]).length
+      @results = @logtype.events.paginate(params[:aquery], {:finder => "find_with_ferret", :total_entries => @total}.merge({:page => params[:page], :per_page => params[:per_page]}))
+    end
   end
   
   def new

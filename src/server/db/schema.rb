@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090804022411) do
+ActiveRecord::Schema.define(:version => 20090806184417) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20090804022411) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
   end
 
   add_index "logtypes", ["name"], :name => "index_logtypes_on_name"
