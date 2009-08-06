@@ -6,7 +6,7 @@ class Agent < ActiveRecord::Base
   
   #Validations
   validates_presence_of :hostname, :port, :name
-  validates_format_of :hostname, :with => /([A-Z0-9-]+\.)+[A-Z]{2,4}$/i
+  #validates_format_of :hostname, :with => /([A-Z0-9-]+\.)+[A-Z]{2,4}$/i
   validates_uniqueness_of :name
   
   def add_logtype(logtype)
