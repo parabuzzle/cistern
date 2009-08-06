@@ -184,3 +184,10 @@ a:hover {
 .result {
 	padding: 5px;
 }
+
+.advancedsearch {
+	display: none;
+	background:#FF9;
+	padding: 3px;
+	border: 1px solid #000
+}

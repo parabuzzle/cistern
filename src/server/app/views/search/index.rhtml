@@ -2,8 +2,30 @@
 
 <div>
 	<% form_for :search do |form| %>
-		<div><%= form.text_field :data, :size => 20, :class => "searchbox" %></div>
-		<!--<div class="adendem">advanced</div> -->
-		<div class="agent"><%= submit_tag "Findit!", :class => "submitbutton", :action => 'show' %></div>
+		<div><%= form.text_field :data, :size => 20, :class => "searchbox" %> <%= submit_tag "Findit!", :class => "submitbutton", :action => 'show' %></div>
+		<div class="adendem"><a href='#' onclick="$('.advancedsearch').toggle();return false">advanced</a></div>
+		<div class="advancedsearch">
+			<div class="agent">Search within Logtype</div>
+				<div>
+					<%for log in Logtype.all do%>
+						<%= radio_button_tag "logtype_ids", log.id %> <%= log.name %> 
+					<%end%>
+					<%= radio_button_tag "logtype_ids", "off"%> all
+				</div>
+			<div class="agent">Search within Agent</div>
+				<div>
+					<%for agent in Agent.all do%>
+						<%= radio_button_tag "agent_ids", agent.id %> <%= agent.name %> 
+					<%end%>
+					<%= radio_button_tag "agent_ids", "off"%> all
+				</div>
+			<div class="agent">Show only loglevel (Will show all levels at or above your choice)</div>
+			<div>
+				<%for level in Loglevel.all do%>
+					<%= radio_button_tag "loglevel_ids", level.id %> <%= level.name %> 
+				<%end%>
+				<%= radio_button_tag "loglevel_ids", "off"%> all
+			</div>
+		</div>
 	<%end%>
 </div>
