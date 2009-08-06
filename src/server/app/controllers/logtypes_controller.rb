@@ -8,7 +8,11 @@ class LogtypesController < ApplicationController
   def show
     @logtype = Logtype.find(params[:id])
     @title = "All Events for #{@logtype.name}"
-    @event = @logtype.events.paginate :all, :per_page => params[:perpage], :page => params[:page]
+    if params[:loglevel].nil?
+      @event = @logtype.events.paginate :all, :per_page => params[:perpage], :page => params[:page]
+    else
+      @event = @logtype.events.paginate :all, :per_page => params[:perpage], :page => params[:page], :conditions => "loglevel_id <= '#{params[:loglevel]}'"
+    end
     @events = rebuildevents(@event)
   end
   
