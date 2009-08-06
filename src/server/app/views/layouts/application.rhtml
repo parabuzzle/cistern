@@ -12,11 +12,11 @@
 <body>
 	<div id="header">
 		<div id="logo">Cistern</div>
-		<div id="search	">
+		<div id="search">
 			Search all Events
 			<% form_for :search do |form| %>
-				<div><%= form.text_field :data, :size => 20, :class => "searchbox" %></div>
-				<div class="adendem">advanced</div>
+				<div><%= form.text_field :data, :size => 20, :class => "searchbox", :value => params[:query] %></div>
+				<!--<div class="adendem">advanced</div> -->
 			<%end%>
 		</div>
 	</div> <!-- header -->

@@ -1,0 +1,9 @@
+<h1>Search for Events</h1>
+
+<div>
+	<% form_for :search do |form| %>
+		<div><%= form.text_field :data, :size => 20, :class => "searchbox" %></div>
+		<!--<div class="adendem">advanced</div> -->
+		<div class="agent"><%= submit_tag "Findit!", :class => "submitbutton", :action => 'show' %></div>
+	<%end%>
+</div>
