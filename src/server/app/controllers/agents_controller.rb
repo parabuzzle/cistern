@@ -8,10 +8,14 @@ class AgentsController < ApplicationController
   def show
     @agent = Agent.find(params[:id])
     @title = "All Events for #{@agent.name}"
-    if params[:logtype].nil?
+    if params[:logtype].nil? and params[:loglevel].nil?
       @event = @agent.events.paginate :all, :per_page => params[:perpage], :page => params[:page]
-    else
+    elsif !params[:logtype].nil? and params[:loglevel].nil?
       @event = @agent.events.paginate :all, :per_page => params[:perpage], :page => params[:page], :conditions => "logtype_id = '#{params[:logtype]}'"
+    elsif params[:logtype].nil? and !params[:loglevel].nil?
+      @event = @agent.events.paginate :all, :per_page => params[:perpage], :page => params[:page], :conditions => "loglevel_id <= '#{params[:loglevel]}'"
+    else
+      @event = @agent.events.paginate :all, :per_page => params[:perpage], :page => params[:page], :conditions => "logtype_id = '#{params[:logtype]}' and loglevel_id <= '#{params[:loglevel]}'"
     end
     @events = rebuildevents(@event)
   end
