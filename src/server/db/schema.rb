@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20090804022411) do
   add_index "agents", ["hostname"], :name => "index_agents_on_hostname"
   add_index "agents", ["name"], :name => "index_agents_on_name"
 
-  create_table "agents_logtypes", :force => true do |t|
+  create_table "agents_logtypes", :id => false, :force => true do |t|
     t.integer  "logtype_id"
     t.integer  "agent_id"
     t.datetime "created_at"

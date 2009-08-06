@@ -19,9 +19,9 @@ class AgentsController < ApplicationController
   def new
     if request.post?
       @agent = Agent.new(params[:agent])
-      @agent.key = Digest::MD5.hexdigest(@agent.hostname + Time.now.to_s)
+      @agent.authkey = Digest::MD5.hexdigest(@agent.hostname + Time.now.to_s)
       if @agent.save
-        flash[:notice] = "Agent #{@agent.name} added"
+        flash[:notice] = "Agent #{@agent.name} added -- don't forget to edit your agent to add it to your logtypes"
         redirect_to :action => "index"
       else
         flash[:error] = "There were errors creating your agent"
@@ -34,6 +34,7 @@ class AgentsController < ApplicationController
   def edit
     @agent = Agent.find(params[:id])
     if request.post?
+      params[:agent][:logtype_ids] ||= []
       @agent.update_attributes(params[:agent])
       if @agent.save
         flash[:notice] = "Agent #{@agent.name} updated"
@@ -61,5 +62,6 @@ class AgentsController < ApplicationController
       redirect_to :action => "index"
     end
   end
+  
   
 end

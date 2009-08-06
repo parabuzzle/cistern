@@ -1,10 +1,29 @@
 <h1>Agents</h1>
 
-<ul>
-	<% for agent in @agents do%>
-		<li><%=link_to(agent.name, :action => 'show', :id => agent.id)%> [<%=agent.hostname%>] <%=link_to("edit", :action => 'edit', :id => agent.id)%> :: <%= agent.events.count%> total events</li>
-	<%end%>
-</ul>
+<div class="subnav"><%=link_to("Create new Agent #{image_tag("addserver.png", :alt => "add server", :border => "0px")}", :action => "new")%></div>
+
+<div class="clear"></div>
+
+<% for agent in @agents do%>
+<div class="agent">
+	<%=image_tag("serverup.png")%><a href='#' onclick="$('.agentinfo<%=agent.id%>').toggle();return false"><%=agent.name%></a> : <%=link_to("View Events", :action=>"show", :id=>agent.id)%>
+	<div class="agentinfo<%=agent.id%>" style="display:none; margin-left:30px; background:#FF9; padding: 3px; border: 1px solid #000">
+		<div class="subnav" style="width:200px;">
+			Logtypes
+			<% for logtype in agent.logtypes do%>
+				<div class="adendem"><%=logtype.name%></div>
+			<%end%>
+		</div>
+		<div clear></div>
+		<div class="info">Total Events: <%= agent.events.count %></div>
+		<div class="info">Hostname: <%=agent.hostname%></div>
+		<div class="info">Listenport: <%=agent.port%></div>
+		<div class="info">Key: <%=agent.authkey%></div>
+		<div class="info"><%=link_to("edit", :action => "edit", :id => agent.id)%></div>
+	</div>
+</div>
+<%end%>
+
 <div class="pagination">
 	<%= will_paginate @event %>
 </div>

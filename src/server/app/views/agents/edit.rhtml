@@ -18,13 +18,17 @@
 			</tr>
 			<tr>
 				<td>Key:</td>
-				<td align="right"><%= f.text_field :key, :class => "fbox"%></td>
+				<td align="right"><%= f.text_field :authkey, :class => "fbox"%></td>
 			</tr>
-			<tr>
-				<td><%= submit_tag "Update Agent", :class => "submitbutton" %></td>
-				<td></td>
-			</tr>
+		</table>
+		
+		<div class="agent">Logtypes</div>
+			<% for log in Logtype.find(:all) %>
+				<div class="agents">
+		  			<%= check_box_tag "agent[logtype_ids][]", log.id, @agent.logtypes.include?(log) %> <%= log.name %>
+				</div>
+			<%end%>
+			<div class="agent"><%= submit_tag "Update Agent", :class => "submitbutton" %></div>
 		<%end%>
-	</table>
 					
 </div>

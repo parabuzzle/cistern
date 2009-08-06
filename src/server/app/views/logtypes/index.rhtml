@@ -1,10 +1,20 @@
 <h1>Logtypes</h1>
 
-<ul>
-	<% for type in @logtypes do%>
-		<li><%=link_to(type.name, :action => 'show', :id => type.id)%> :: <%= type.events.count%> total events</li>
-	<%end%>
-</ul>
+<div class="subnav"><%=link_to("Create new Logtype", :action => "new")%></div>
+
+<div class="clear"></div>
+
+<% for type in @logtypes do%>
+<div class="agent">
+	<a href='#' onclick="$('.typeinfo<%=type.id%>').toggle();return false"><%=type.name%></a> : <%=link_to("View Events", :action=>"show", :id=>type.id)%>
+	<div class="typeinfo<%=type.id%>" style="display:none; background:#FF9; padding: 3px; border: 1px solid #000">
+		<div class="info">Total Events: <%= type.events.count %></div>
+		<div class="info">Total Agents: <%=type.agents.count%></div>
+		<div class="info"><%=link_to("edit", :action => "edit", :id => type.id)%></div>
+	</div>
+</div>
+<%end%>
+
 <div class="pagination">
 	<%= will_paginate @logtypes %>
 </div>

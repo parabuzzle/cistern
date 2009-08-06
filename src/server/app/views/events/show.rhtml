@@ -1,7 +1,7 @@
 <h1>All Events</h1>
 <ul>
 <% for event in @events do %>
-	<li><%= if params[:withepoch] then event.time else Time.at(event.time.to_f) end %> : <%= event.loglevel.name%> <%=event.payload%></li>
+	<li><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %> : <%= event.loglevel.name%> <%=event.payload%></li>
 <%end%>
 </ul>
 
@@ -20,4 +20,6 @@
 <%else%>
 	<div class="adendem"><%=link_to "show epoch time", :withepoch => 1, :page => params[:page], :perpage => params[:perpage] %></div>
 <%end%>
+
+<div class="adendem"><%=link_to "view by agent", :controller => 'agents', :action => "index" %> | <%=link_to "view by logtype", :controller => 'logtypes', :action => 'index' %></div>
 

@@ -1,4 +1,12 @@
 <h1>All Events for <%=@logtype.name%></h1>
+<div id="filter">
+		<a href='#' onclick="$('.agentinfo').toggle();return false">View by Agent</a>
+		<div class="agentinfo" style="display:none; background:#FF9; padding: 3px; border: 1px solid #000">
+			<% for agent in @logtype.agents do %>
+				<div class="info"><%= link_to( agent.name, :controller => 'agents', :action => 'show', :logtype => @logtype.id, :withepoch => params[:withepoch], :id => agent.id )%></div>
+			<%end%>
+		</div>
+</div>
 <div id="eventlist">
 	<ul>
 	<% for event in @events do %>

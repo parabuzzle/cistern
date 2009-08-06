@@ -1,0 +1,18 @@
+<h1>Edit <%=@logtype.name%></h1>
+<%= error_messages_for 'logtype' %>
+<div id="form">
+	
+	<table width="100%">
+		<% form_for :logtype do |f|%>
+			<tr>
+				<td>Name:</td> 
+				<td align="right"><%= f.text_field :name, :class => "fbox"%></td>
+			</tr>
+			<tr>
+				<td><%= submit_tag "Update Logtype", :class => "submitbutton" %></td>
+				<td></td>
+			</tr>
+		<%end%>
+	</table>
+					
+</div>
