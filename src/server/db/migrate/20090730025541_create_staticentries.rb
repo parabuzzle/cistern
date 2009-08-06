@@ -7,6 +7,9 @@ class CreateStaticentries < ActiveRecord::Migration
       t.column :data, :text
       t.timestamps
     end
+    add_index :staticentries, :logtype_id
+    add_index :staticentries, :id
+    
     #add_index :staticentries, :hash_key
     #add_index :staticentries, :agent_id 
     #unless ActiveRecord::Base.configurations[ENV['RAILS_ENV']]['adapter'] != 'mysql'

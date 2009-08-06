@@ -1,4 +1,5 @@
 class Agent < ActiveRecord::Base
+  acts_as_ferret :fields => [:hostname, :name, :port]
   
   has_and_belongs_to_many :logtypes, :join_table => :agents_logtypes
   has_many :events

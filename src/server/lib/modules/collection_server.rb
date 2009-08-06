@@ -8,7 +8,7 @@ module CollectionServer
   @@finish = '__1_EE'
   
   def check_key(agent, key)
-    if agent.key != key
+    if agent.authkey != key
       return false
     else
       return true
@@ -28,15 +28,15 @@ module CollectionServer
     static.save
     static = Staticentry.find_by_id(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
     event = static.events.new
-    event.time = map['time']
+    event.etime = map['etime']
     event.loglevel_id = map['loglevel_id']
     event.payload = map['payload']
     event.logtype_id = map['logtype_id']
     event.agent_id = map['agent_id']
-    if check_key(Agent.find(map['agent_id']), map['key'])
+    if check_key(Agent.find(map['agent_id']), map['authkey'])
       event.save
     else
-      ActiveRecord::Base.logger.debug "Event dropped -- invalid agent key sent"
+      ActiveRecord::Base.logger.debug "Event dropped -- invalid agent authkey sent"
     end
     port, ip = Socket.unpack_sockaddr_in(get_peername)
     host = Socket.getaddrinfo(ip, 0, Socket::AF_UNSPEC, Socket::SOCK_STREAM, nil, Socket::AI_CANONNAME)[0][2]

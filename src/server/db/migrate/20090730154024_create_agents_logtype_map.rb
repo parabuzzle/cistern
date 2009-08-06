@@ -5,6 +5,8 @@ class CreateAgentsLogtypeMap < ActiveRecord::Migration
       t.column :agent_id, :int
       t.timestamps
     end
+    add_index :agents_logtypes, :logtype_id
+    add_index :agents_logtypes, :agent_id
   end
 
   def self.down

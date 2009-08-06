@@ -15,10 +15,13 @@ ActiveRecord::Schema.define(:version => 20090804022411) do
     t.string   "name"
     t.string   "hostname"
     t.string   "port"
-    t.string   "key"
+    t.string   "authkey"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "agents", ["hostname"], :name => "index_agents_on_hostname"
+  add_index "agents", ["name"], :name => "index_agents_on_name"
 
   create_table "agents_logtypes", :force => true do |t|
     t.integer  "logtype_id"
@@ -27,16 +30,25 @@ ActiveRecord::Schema.define(:version => 20090804022411) do
     t.datetime "updated_at"
   end
 
+  add_index "agents_logtypes", ["agent_id"], :name => "index_agents_logtypes_on_agent_id"
+  add_index "agents_logtypes", ["logtype_id"], :name => "index_agents_logtypes_on_logtype_id"
+
   create_table "events", :force => true do |t|
     t.string   "payload"
     t.string   "staticentry_id"
     t.integer  "agent_id"
     t.integer  "loglevel_id"
     t.integer  "logtype_id"
-    t.string   "time"
+    t.string   "etime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "events", ["agent_id"], :name => "index_events_on_agent_id"
+  add_index "events", ["etime"], :name => "index_events_on_etime"
+  add_index "events", ["loglevel_id"], :name => "index_events_on_loglevel_id"
+  add_index "events", ["logtype_id"], :name => "index_events_on_logtype_id"
+  add_index "events", ["staticentry_id"], :name => "index_events_on_staticentry_id"
 
   create_table "loglevels", :force => true do |t|
     t.string   "name"
@@ -50,11 +62,16 @@ ActiveRecord::Schema.define(:version => 20090804022411) do
     t.datetime "updated_at"
   end
 
+  add_index "logtypes", ["name"], :name => "index_logtypes_on_name"
+
   create_table "staticentries", :force => true do |t|
     t.integer  "logtype_id"
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "staticentries", ["id"], :name => "index_staticentries_on_id"
+  add_index "staticentries", ["logtype_id"], :name => "index_staticentries_on_logtype_id"
 
 end

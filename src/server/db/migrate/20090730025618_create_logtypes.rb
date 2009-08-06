@@ -4,6 +4,7 @@ class CreateLogtypes < ActiveRecord::Migration
       t.column :name, :string
       t.timestamps
     end
+    add_index :logtypes, :name
   end
 
   def self.down

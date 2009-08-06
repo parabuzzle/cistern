@@ -1,4 +1,6 @@
 class Staticentry < ActiveRecord::Base
+  acts_as_ferret 
+  
   has_many :events
   belongs_to :logtype
   has_many :loglevels, :through => :entries

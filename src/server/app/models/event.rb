@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
-  acts_as_ferret
+  include ApplicationHelper
+  
+  acts_as_ferret :fields => ['full_event', :etime]
   
   belongs_to :staticentry
   belongs_to :agent
@@ -8,9 +10,16 @@ class Event < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
   
-  default_scope :order => 'time DESC'
+  default_scope :order => 'etime DESC'
   
   #Validations
-  validates_presence_of :agent_id, :loglevel_id, :time, :logtype_id
+  validates_presence_of :agent_id, :loglevel_id, :etime, :logtype_id
+  
+  def full_event
+    return rebuildevent(self)
+  end
+  
+  
+  
    
 end
