@@ -36,23 +36,20 @@ socket.connect( sockaddr )
 #The entire sting should have a checksum or it will be thrown out
 
 event = Hash.new
-event.store("authkey", "111")
-event.store("data","Error log in <<<NAME>>> module")
-event.store("logtype_id", 1)
-event.store("loglevel_id", 2)
+event.store("authkey", "55bef2e25cc000d3c0d55d8ae27b6aeb")
+event.store("data","rotating events log for <<<NAME>>>")
+event.store("logtype_id", 3)
+event.store("loglevel_id", 4)
 event.store("etime", Time.now.to_f)
-event.store("payload", "NAME=Biff")
+event.store("payload", "NAME=jboss")
 event.store("agent_id", 1)
 
 e = String.new
 event.each do |key, val|
   e = e + key.to_s + @value + val.to_s + @break
 end
-puts e
 e = e + @checksum + Digest::MD5.hexdigest(e) + "__1_EE"
 puts e
-socket.write(e)
-socket.write(e)
 socket.write(e)
 
 

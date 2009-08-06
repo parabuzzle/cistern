@@ -3,6 +3,8 @@ require 'digest/md5'
 require RAILS_ROOT + '/lib/modules/collection_server.rb'
 require RAILS_ROOT + '/lib/modules/command_server.rb'
 
+USEMEMCACHE = YAML::load(File.open(RAILS_ROOT + "/config/cistern.yml"))['usememcache']
+
 #Mixin for the string class to add a validity check for log events based on the checksum appended to buffered received data
 class String
   def valid?

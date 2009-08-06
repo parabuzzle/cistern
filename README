@@ -14,6 +14,7 @@ Gem Requirements:
 * daemons
 * ferret
 * memcached
+* cached_model
 
 External Application Requirements:
 * MySQL >=5

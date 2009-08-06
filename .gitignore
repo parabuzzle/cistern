@@ -4,4 +4,6 @@
 src/server/config/database.yml
 src/server/config/daemons.yml
 src/server/config/collectors.yml
+src/server/config/cistern.yml
+src/server/config/memcached.yml
 src/server/index

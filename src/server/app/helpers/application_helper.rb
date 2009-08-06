@@ -13,7 +13,11 @@ module ApplicationHelper
   
   #Return a string of replaced static entry keys based on event's payload
   def rebuildevent(e)
-    static = e.staticentry
+    if USEMEMCACHE != true
+      static = Staticentry.find(e.staticentry.id)
+    else
+      static = Staticentry.get_cache(e.staticentry.id)
+    end
     entries = e.payload.split(',')
     hash = Hash.new
     entries.each do |m|

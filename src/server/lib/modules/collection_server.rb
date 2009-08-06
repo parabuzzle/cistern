@@ -26,7 +26,11 @@ module CollectionServer
     static = Logtype.find(map['logtype_id']).staticentries.new
     static.data = map['data']
     static.save
-    static = Staticentry.find_by_id(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
+    unless USEMEMCACHE != true
+      static = Staticentry.get_cache(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
+    else
+      static = Staticentry.find(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
+    end
     event = static.events.new
     event.etime = map['etime']
     event.loglevel_id = map['loglevel_id']
