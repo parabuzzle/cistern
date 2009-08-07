@@ -3,7 +3,7 @@
 <div class="adendem"><%=link_to("clear filters", :action => "show", :loglevel => nil)%></div>
 <%end%>
 <div id="events">
-<% for event in @events do %>
+<% for event in @events.reverse do %>
 	<div class="event">
 		<a href="#" onclick="$('.eventinfo<%=event.id%>').toggle();return false"><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %></a> : <%= link_to(event.loglevel.name, :action => "show", :loglevel => event.loglevel.id, :withepoch => params[:withepoch])%> :: 
 		<%=event.payload%>
