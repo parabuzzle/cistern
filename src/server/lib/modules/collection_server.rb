@@ -23,9 +23,17 @@ module CollectionServer
       parts = keys.split(@@value)
       map.store(parts[0],parts[1])
     end
-    static = Logtype.find(map['logtype_id']).staticentries.new
-    static.data = map['data']
-    static.save
+    unless USEMEMCACHE != true
+      if Staticentry.get_cache(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s)).nil?
+        static = Logtype.find(map['logtype_id']).staticentries.new
+        static.data = map['data']
+        static.save
+      end
+    else
+      static = Logtype.find(map['logtype_id']).staticentries.new
+      static.data = map['data']
+      static.save
+    end
     unless USEMEMCACHE != true
       static = Staticentry.get_cache(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
     else
