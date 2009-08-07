@@ -41,7 +41,7 @@ event.store("data","rotating events log for <<<NAME>>>")
 event.store("logtype_id", 3)
 event.store("loglevel_id", 4)
 event.store("etime", Time.now.to_f)
-event.store("payload", "NAME=jboss")
+event.store("payload", "NAME/000/jboss")
 event.store("agent_id", 1)
 
 e = String.new

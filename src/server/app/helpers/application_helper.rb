@@ -21,7 +21,7 @@ module ApplicationHelper
     entries = e.payload.split(',')
     hash = Hash.new
     entries.each do |m|
-      map = m.split('=')
+      map = m.split('/000/')
       hash.store('<<<' + map[0] + '>>>',map[1])
     end
     p = static.data
