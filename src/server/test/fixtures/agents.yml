@@ -10,7 +10,7 @@ agent:
     name: agent
     hostname: agent1.corp.cistern.com
     port: 9845
-    key: unused
+    authkey: 123
     
 #invalidhostname:
 #    id: 2

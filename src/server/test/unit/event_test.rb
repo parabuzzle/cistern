@@ -13,7 +13,7 @@ class EventTest < ActiveSupport::TestCase
     e.agent_id = 1
     e.loglevel_id = 1
     e.logtype_id = 1
-    e.time = 1249062105.06911
+    e.etime = 1249062105.06911
     assert e.save
   end
   
@@ -24,7 +24,7 @@ class EventTest < ActiveSupport::TestCase
     e.agent_id = nil
     e.loglevel_id = 1
     e.logtype_id = 1
-    e.time = 1249062105.06911
+    e.etime = 1249062105.06911
     assert !e.save
   end
   
@@ -35,7 +35,7 @@ class EventTest < ActiveSupport::TestCase
     e.agent_id = 1
     e.loglevel_id = nil
     e.logtype_id = 1
-    e.time = 1249062105.06911
+    e.etime = 1249062105.06911
     assert !e.save
   end
   
@@ -45,7 +45,7 @@ class EventTest < ActiveSupport::TestCase
     e.staticentry_id = "85d229332bf72d4539372498264300d6"
     e.agent_id = 1
     e.loglevel_id = 1
-    e.time = nil
+    e.etime = nil
     e.logtype_id = 1
     assert !e.save
   end
@@ -56,7 +56,7 @@ class EventTest < ActiveSupport::TestCase
     e.staticentry_id = "85d229332bf72d4539372498264300d6"
     e.agent_id = 1
     e.loglevel_id = 1
-    e.time = 1249062105.06911
+    e.etime = 1249062105.06911
     e.logtype_id = nil
     assert !e.save
   end

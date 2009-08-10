@@ -9,3 +9,4 @@
 apache:
     id: 1
     name: apache
+    description: apache logs

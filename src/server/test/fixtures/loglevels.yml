@@ -1,5 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
+error:
+    id: 1
+    name: ERROR
+
 # one:
 #   column: value
 #
