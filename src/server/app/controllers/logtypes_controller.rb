@@ -20,6 +20,9 @@ class LogtypesController < ApplicationController
   end
   
   def search
+    if request.post?
+      params[:aquery] = params[:search][:data]
+    end
     if params[:aquery].nil?
       redirect_to :action => 'show', :id => params[:id]
     else

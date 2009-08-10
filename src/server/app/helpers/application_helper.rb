@@ -18,7 +18,7 @@ module ApplicationHelper
     else
       static = Staticentry.get_cache(e.staticentry.id)
     end
-    entries = e.payload.split(',')
+    entries = e.payload.split('/111/')
     hash = Hash.new
     entries.each do |m|
       map = m.split('/000/')

@@ -192,9 +192,11 @@ a:hover {
 	border: 1px solid #000
 }
 
-.event {
-	
+.event{
+	background: #fff;
+	margin-bottom: 10px;
 }
+
 .event a {
 	color:#333;
 }
