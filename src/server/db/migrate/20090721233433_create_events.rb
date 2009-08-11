@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.column :agent_id, :int
       t.column :loglevel_id, :int
       t.column :logtype_id, :int
-      t.column :etime, :string
+      t.column :etime, :float
       t.timestamps
     end
     add_index :events, :logtype_id

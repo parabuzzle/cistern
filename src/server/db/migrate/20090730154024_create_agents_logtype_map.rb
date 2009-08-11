@@ -10,6 +10,6 @@ class CreateAgentsLogtypeMap < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :events
+    drop_table :agents_logtypes
   end
 end

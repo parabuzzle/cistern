@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20090806184417) do
     t.integer  "agent_id"
     t.integer  "loglevel_id"
     t.integer  "logtype_id"
-    t.string   "etime"
+    t.float    "etime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
