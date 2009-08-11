@@ -5,8 +5,10 @@
 <div class="clear"></div>
 
 <% for agent in @agents do%>
+<%online = is_agent_online?(agent.hostname, agent.port)%>
 <div class="agent">
-	<%=image_tag("serverup.png")%><a href='#' onclick="$('.agentinfo<%=agent.id%>').toggle();return false"><%= h agent.name%></a> : <%=link_to("View Events", :action=>"show", :id=>agent.id)%>
+	<%=if online then image_tag("serverup.png", :alt => "agent is up") else image_tag("serverdown.png", :alt => "agent listener down")end%><a href='#' onclick="$('.agentinfo<%=agent.id%>').toggle();return false"><%= h agent.name%></a> : <%=link_to("View Events", :action=>"show", :id=>agent.id)%> 
+	<%= if !online then "(agent listener is offline)" end%>
 	<div class="agentinfo<%=agent.id%>" style="display:none; margin-left:30px; background:#FF9; padding: 3px; border: 1px solid #000">
 		<div class="subnav" style="width:200px;">
 			Logtypes
@@ -20,7 +22,7 @@
 		<div class="info">Listenport: <%=h agent.port%></div>
 		<div class="info">Key: <%=h agent.authkey%></div>
 		<div class="info">Agent_id: <%=agent.id%></div>
-		<div class="info"><%=link_to("View Commands for Host", :action => "commands", :id => agent.id)%></div>
+		<div class="info"><%=if online then link_to("View Commands for Host", :action => "commands", :id => agent.id) else "Agent listener is offline" end%></div>
 		<div class="info"><%=link_to("edit", :action => "edit", :id => agent.id)%></div>
 	</div>
 </div>

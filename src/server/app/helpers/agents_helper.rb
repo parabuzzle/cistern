@@ -54,4 +54,15 @@ module AgentsHelper
     return a
   end
   
+  def is_agent_online?(ip, port)
+    begin
+      socket = TCPSocket.new(ip, port)
+    rescue Errno::ECONNREFUSED
+      return false
+    end
+    socket.close
+    return true
+  end
+  
+  
 end
