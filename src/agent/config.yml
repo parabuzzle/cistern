@@ -7,7 +7,7 @@ agent:
     listenport: 9846
     bindip: 0.0.0.0
     agent_id: 1
-    key: 14f65b5c37d30db7db5b1298dc85acd3
+    key: 7952d3072b86a949e45232fe42ad03bc
     
 logtypes:
     syslog:

@@ -1,7 +1,7 @@
 module CommandServer
   
   def check_sig(serverkey, payload)
-    if serverkey != Digest::MD5.hexdigest("14f65b5c37d30db7db5b1298dc85acd3" + payload)
+    if serverkey != Digest::MD5.hexdigest(CONFIG['agent']['key'] + payload)
       return false
     else
       return true

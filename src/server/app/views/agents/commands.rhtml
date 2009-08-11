@@ -14,7 +14,7 @@
 		<h1>Output of Command <%=params[:command]%></h1>
 		<div class="info"><%=link_to("Back to Commands", :action => 'commands')%>
 		<div id="commandout">
-		<%= @output.gsub('\n', '<br/>')%>
+		<%= sanitize @output.gsub('\n', '<br/>'), :tags => %w(br)%>
 		</div>
 		<%end%>
 <%end%>
