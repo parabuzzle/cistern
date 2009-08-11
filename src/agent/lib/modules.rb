@@ -54,7 +54,6 @@ module CommandServer
         if check_sig(map['authkey'], map['payload'])
           puts map['payload']
           send_data get_result(map['payload'])
-          puts get_result(map['payload'])
         else
           #log signature is bad
           send_data "signature is bad - punted"
