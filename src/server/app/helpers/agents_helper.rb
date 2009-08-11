@@ -56,12 +56,18 @@ module AgentsHelper
   
   def is_agent_online?(ip, port)
     begin
-      socket = TCPSocket.new(ip, port)
-    rescue Errno::ECONNREFUSED
-      return false
+      Timeout::timeout(1) do
+        begin
+          s = TCPSocket.new(ip, port)
+          s.close
+          return true
+        rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+          return false
+        end
+      end
+    rescue Timeout::Error
     end
-    socket.close
-    return true
+    return false
   end
   
   
