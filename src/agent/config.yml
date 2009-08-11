@@ -1,0 +1,22 @@
+server:
+    hostname: 127.0.0.1
+    connection: tcp
+    port: 9845
+
+agent:
+    listenport: 9846
+    bindip: 0.0.0.0
+    agent_id: 1
+    key: 14f65b5c37d30db7db5b1298dc85acd3
+    
+logtypes:
+    syslog:
+        modelfile: syslog.rb
+        modelname: SysLogModel
+        logtype_id: 1
+        logfile: /var/log/system.log
+    authlog:
+        modelfile: syslog.rb
+        modelname: SysLogModel
+        logtype_id: 2
+        logfile: /var/log/secure.log
