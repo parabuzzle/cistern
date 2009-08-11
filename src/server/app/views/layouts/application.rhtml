@@ -30,10 +30,10 @@
 		</div>
 		<div id="main">
 			<% if flash[:notice]%>
-				<div id="notice"><%=flash[:notice]%></div>
+				<div id="notice"><%=h flash[:notice]%></div>
 			<%end%>
 			<%if flash[:error]%>
-				<div id="error"><%=flash[:error]%></div>
+				<div id="error"><%=h flash[:error]%></div>
 			<%end%>
 			<%= @content_for_layout %>
 			

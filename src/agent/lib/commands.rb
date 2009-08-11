@@ -8,4 +8,8 @@ module AgentCommands
     return `w`
   end
   
+  def say_foo
+    return "foo!"
+  end
+  
 end

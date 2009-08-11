@@ -6,7 +6,7 @@
 <% for event in @events do %>
 	<div class="event">
 		<a href="#" onclick="$('.eventinfo<%=event.id%>').toggle();return false"><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %></a> : <%= link_to(h(event.loglevel.name), :action => "show", :loglevel => event.loglevel.id, :withepoch => params[:withepoch])%> :: 
-		<%= h event.payload%>
+		<%= sanitize event.payload, :tags => %w(br) %>
 		<div class="eventinfo<%=event.id%>" style="display:none; background:#FF9; border:1px solid #000; padding:5px;">
 			<div class="info">Agent: <%=link_to(h(event.agent.name), :controller => "agents", :action => "show", :id => event.agent.id)%></div>
 			<div class="info">Logtype: <%=link_to(h(event.staticentry.logtype.name), :controller => "logtypes", :action => "show", :id => event.staticentry.logtype.id)%></div>

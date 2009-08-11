@@ -1,7 +1,7 @@
 module CommandServer
   
   def check_sig(serverkey, payload)
-    if serverkey != Digest::MD5.hexdigest("7952d3072b86a949e45232fe42ad03bc" + payload)
+    if serverkey != Digest::MD5.hexdigest("14f65b5c37d30db7db5b1298dc85acd3" + payload)
       return false
     else
       return true
@@ -57,11 +57,11 @@ module CommandServer
           puts get_result(map['payload'])
         else
           #log signature is bad
-          puts "signature is bad - punted"
+          send_data "signature is bad - punted"
         end
       else
         #log checksum invalid
-        puts "checksum is bad - punted"
+        send_data "checksum is bad - punted"
       end
     end
   end

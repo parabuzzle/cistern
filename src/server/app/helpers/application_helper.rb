@@ -27,6 +27,7 @@ module ApplicationHelper
     p = static.data
     hash.each do |key, val|
       p = p.gsub(key,val)
+      p = p.gsub("\n", "<br/>")
     end
     return p
   end
