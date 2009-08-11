@@ -1,4 +1,5 @@
 class AgentsController < ApplicationController
+  include AgentsHelper
   
   def index
     @title = "Agents"
@@ -21,6 +22,17 @@ class AgentsController < ApplicationController
       @event = @agent.events.paginate :all, :per_page => params[:perpage], :page => params[:page], :conditions => "logtype_id = '#{params[:logtype]}' and loglevel_id <= '#{params[:loglevel]}'"
     end
     @events = rebuildevents(@event)
+  end
+  
+  def commands
+    @agent = Agent.find(params[:id])
+    if params[:command].nil?
+      @title = "Available Commands for #{@agent.name}"
+      @commands = get_commands(@agent)
+    else
+      @title = "Command output for #{params[:command]}"
+      @output = get_command(@agent, params[:command])
+    end
   end
   
   def search

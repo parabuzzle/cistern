@@ -5,7 +5,7 @@
 	<div class="event">
 		<a href="#" onclick="$('.eventinfo<%=event.id%>').toggle();return false"><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %></a> : <%= h event.loglevel.name %> :: 
 		<%=h event.full_event%>
-		<div class="eventinfo<%=event.id%>" style="display:none; background:#FF9; border:1px solid #000; padding:5px; width:50%">
+		<div class="eventinfo<%=event.id%>" style="display:none; background:#FF9; border:1px solid #000; padding:5px;">
 			<div class="info">Agent: <%=link_to(h(event.agent.name), :controller => "agents", :action => "show", :id => event.agent.id)%></div>
 			<div class="info">Logtype: <%=link_to(h(event.staticentry.logtype.name), :controller => "logtypes", :action => "show", :id => event.staticentry.logtype.id)%></div>
 			<div class="info">Static Entry Id: <%=h event.staticentry_id%></div>

@@ -20,6 +20,7 @@
 		<div class="info">Listenport: <%=h agent.port%></div>
 		<div class="info">Key: <%=h agent.authkey%></div>
 		<div class="info">Agent_id: <%=agent.id%></div>
+		<div class="info"><%=link_to("View Commands for Host", :action => "commands", :id => agent.id)%></div>
 		<div class="info"><%=link_to("edit", :action => "edit", :id => agent.id)%></div>
 	</div>
 </div>

@@ -205,6 +205,15 @@ a:hover {
 	background: #aaa;
 }
 
+#commandout {
+	overflow: auto;
+	white-space: nowrap;
+	background: #eee;
+	padding: 4px;
+	border: 1px solid #AAA;
+	margin: 5px;
+}
+
 #totalhits {
 	margin-bottom: 10px;
 	font-size: 14px;
