@@ -61,7 +61,7 @@ public class TCPAppender extends AppenderSkeleton {
 			level = "6";
 		}
 		event.setLoglevel_id(level);
-		event.setEtime(Long.toString(entry.getTimeStamp()/1000));
+		//event.setEtime(Long.toString(entry.getTimeStamp()/1000));
 		
 		String data = null;
 		try {

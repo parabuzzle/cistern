@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" skipped="0" tests="1" time="0.024" failures="0" name="org.cistern.log4j.appender.AppTest">
+  <properties>
+    <property value="Apple Inc." name="java.vendor"/>
+    <property value="/Users/heijmans/.m2/repository" name="localRepository"/>
+    <property value="SUN_STANDARD" name="sun.java.launcher"/>
+    <property value="HotSpot Client Compiler" name="sun.management.compiler"/>
+    <property value="813c90" name="env.SECURITYSESSIONID"/>
+    <property value="Mac OS X" name="os.name"/>
+    <property value="/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/jsfd.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/ui.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/laf.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/sunrsasign.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/jsse.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/jce.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Classes/charsets.jar" name="sun.boot.class.path"/>
+    <property value="/var/folders/K2/K2XkcjL5FoyjLv4ykudu3k++gAY/-Tmp-/" name="env.TMPDIR"/>
+    <property value="Sun Microsystems Inc." name="java.vm.specification.vendor"/>
+    <property value="1.5.0_19-b02-304" name="java.runtime.version"/>
+    <property value="/tmp/launch-z7dbML/Render" name="env.Apple_PubSub_Socket_Render"/>
+    <property value="/tmp/launch-doYP0q/:0" name="env.DISPLAY"/>
+    <property value="heijmans" name="user.name"/>
+    <property value="heijmans" name="env.USER"/>
+    <property value="/bin/bash" name="env.SHELL"/>
+    <property value="0xB0C9:0:0" name="env.__CF_USER_TEXT_ENCODING"/>
+    <property value="true" name="awt.nativeDoubleBuffering"/>
+    <property value="/usr/bin:/bin:/usr/sbin:/sbin" name="env.PATH"/>
+    <property value="en" name="user.language"/>
+    <property value="../Resources/Eclipse.icns" name="env.APP_ICON_24279"/>
+    <property value="/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Libraries" name="sun.boot.library.path"/>
+    <property value="1.5.0_19" name="java.version"/>
+    <property value="1" name="env.JAVA_STARTED_ON_FIRST_THREAD_24279"/>
+    <property value="" name="user.timezone"/>
+    <property value="32" name="sun.arch.data.model"/>
+    <property value="local|*.local|169.254/16|*.169.254/16" name="http.nonProxyHosts"/>
+    <property value="/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home/lib/endorsed" name="java.endorsed.dirs"/>
+    <property value="" name="sun.cpu.isalist"/>
+    <property value="MacRoman" name="sun.jnu.encoding"/>
+    <property value="sun.io" name="file.encoding.pkg"/>
+    <property value="/" name="file.separator"/>
+    <property value="Java Platform API Specification" name="java.specification.name"/>
+    <property value="49.0" name="java.class.version"/>
+    <property value="US" name="user.country"/>
+    <property value="/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home" name="java.home"/>
+    <property value="mixed mode, sharing" name="java.vm.info"/>
+    <property value="heijmans" name="env.LOGNAME"/>
+    <property value="10.5.7" name="os.version"/>
+    <property value=":" name="path.separator"/>
+    <property value="1.5.0_19-137" name="java.vm.version"/>
+    <property value="apple.awt.CPrinterJob" name="java.awt.printerjob"/>
+    <property value="UnicodeLittle" name="sun.io.unicode.encoding"/>
+    <property value="apple.awt.CToolkit" name="awt.toolkit"/>
+    <property value="local|*.local|169.254/16|*.169.254/16" name="socksNonProxyHosts"/>
+    <property value="local|*.local|169.254/16|*.169.254/16" name="ftp.nonProxyHosts"/>
+    <property value="/Users/heijmans" name="user.home"/>
+    <property value="org.apache.maven.cli.MavenCli" name="env.JAVA_MAIN_CLASS_25011"/>
+    <property value="Sun Microsystems Inc." name="java.specification.vendor"/>
+    <property value=".:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" name="java.library.path"/>
+    <property value="http://www.apple.com/" name="java.vendor.url"/>
+    <property value="Apple Inc." name="java.vm.vendor"/>
+    <property value="false" name="gopherProxySet"/>
+    <property value="Java(TM) 2 Runtime Environment, Standard Edition" name="java.runtime.name"/>
+    <property value="/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/aspectjrt-1.5.3.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/commons-cli-1.0.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/doxia-sink-api-1.0-alpha-9.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/jsch-0.1.27.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/jtidy-4aug2000r7-dev.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-artifact-3.0-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-core-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-embedder-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-lifecycle-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-model-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-plugin-api-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-profile-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-project-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-reporting-api-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-toolchain-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/maven-workspace-2.1-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-classworlds-1.2-alpha-12.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-container-default-1.0-alpha-44.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-interactivity-api-1.0-alpha-6.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-interpolation-1.0-SNAPSHOT.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/plexus-utils-1.5.1.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-file-1.0-beta-2.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-http-lightweight-1.0-beta-2.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-http-shared-1.0-beta-2.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-provider-api-1.0-beta-2.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-ssh-1.0-beta-2.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-ssh-common-1.0-beta-2.jar:/Applications/eclipse/plugins/org.maven.ide.components.maven_embedder_2.1.0.20080530-2300/jars/wagon-ssh-external-1.0-beta-2.jar" name="java.class.path"/>
+    <property value="ssh" name="env.CVS_RSH"/>
+    <property value="Java Virtual Machine Specification" name="java.vm.specification.name"/>
+    <property value="1.0" name="java.vm.specification.version"/>
+    <property value="little" name="sun.cpu.endian"/>
+    <property value="unknown" name="sun.os.patch.level"/>
+    <property value="/Users/heijmans" name="env.HOME"/>
+    <property value="/Users/heijmans/Projects/cistern/src/plugins/log4j/target/test-classes:/Users/heijmans/Projects/cistern/src/plugins/log4j/target/classes:/Users/heijmans/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/Users/heijmans/.m2/repository/log4j/log4j/1.2.15/log4j-1.2.15.jar:/Users/heijmans/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar:/Users/heijmans/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar:/Users/heijmans/.m2/repository/javax/jms/jms/1.1/jms-1.1.jar:/Users/heijmans/.m2/repository/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar:/Users/heijmans/.m2/repository/com/sun/jmx/jmxri/1.2.1/jmxri-1.2.1.jar:" name="surefire.test.class.path"/>
+    <property value="/var/folders/K2/K2XkcjL5FoyjLv4ykudu3k++gAY/-Tmp-/" name="java.io.tmpdir"/>
+    <property value="http://bugreport.apple.com/" name="java.vendor.url.bug"/>
+    <property value="/tmp/launch-wNYHDp/Listeners" name="env.SSH_AUTH_SOCK"/>
+    <property value="legacy" name="env.COMMAND_MODE"/>
+    <property value="i386" name="os.arch"/>
+    <property value="apple.awt.CGraphicsEnvironment" name="java.awt.graphicsenv"/>
+    <property value="/Library/Java/Extensions:/System/Library/Java/Extensions:/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home/lib/ext" name="java.ext.dirs"/>
+    <property value="1050.1.5.0_19-304" name="mrj.version"/>
+    <property value="/Users/heijmans/Projects/cistern/src/plugins/log4j" name="user.dir"/>
+    <property value="
+" name="line.separator"/>
+    <property value="Java HotSpot(TM) Client VM" name="java.vm.name"/>
+    <property value="ssh" name="env.RSYNC_RSH"/>
+    <property value="/Users/heijmans/Projects/cistern/src/plugins/log4j" name="basedir"/>
+    <property value="true" name="maven.mode.standalone"/>
+    <property value="MacRoman" name="file.encoding"/>
+    <property value="1.5" name="java.specification.version"/>
+  </properties>
+  <testcase classname="org.cistern.log4j.appender.AppTest" time="0.003" name="testApp"/>
+</testsuite>

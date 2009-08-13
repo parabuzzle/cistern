@@ -1,4 +1,4 @@
-package com.yahoo.groups.log4j.cistern;
+package org.cistern.log4j.appender;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
