@@ -23,17 +23,17 @@ module CollectionServer
       parts = keys.split(@@value)
       map.store(parts[0],parts[1])
     end
-    unless USEMEMCACHE != true
-      if Staticentry.get_cache(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s)).nil?
-        static = Logtype.find(map['logtype_id']).staticentries.new
-        static.data = map['data']
-        static.save
-      end
-    else
+    #unless USEMEMCACHE != true
+    #  if Staticentry.get_cache(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s)).nil?
+    #    static = Logtype.find(map['logtype_id']).staticentries.new
+    #    static.data = map['data']
+    #    static.save
+    #  end
+    #else
       static = Logtype.find(map['logtype_id']).staticentries.new
       static.data = map['data']
       static.save
-    end
+    #end
     unless USEMEMCACHE != true
       static = Staticentry.get_cache(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
     else
@@ -66,6 +66,7 @@ module CollectionServer
   def receive_data(data)
        (@buffer ||= BufferedTokenizer.new(delimiter = "__1_EE")).extract(data).each do |line|
          if line.valid?
+           puts line
            log_entry(line)
          else
            port, ip = Socket.unpack_sockaddr_in(get_peername)
