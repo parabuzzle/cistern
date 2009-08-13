@@ -13,8 +13,9 @@
 	<%else%>
 		<h1>Output of Command <%=params[:command]%></h1>
 		<div class="info"><%=link_to("Back to Commands", :action => 'commands')%>
-		<div id="commandout">
+		<div id="commandout"><pre>
 		<%= sanitize @output.gsub('\n', '<br/>'), :tags => %w(br)%>
+		</pre>
 		</div>
 		<%end%>
 <%end%>
