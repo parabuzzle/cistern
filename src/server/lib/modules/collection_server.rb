@@ -65,8 +65,11 @@ module CollectionServer
   #Do this when data is received
   def receive_data(data)
        (@buffer ||= BufferedTokenizer.new(delimiter = "__1_EE")).extract(data).each do |line|
+         #strip newline at beginning of line
+         if line.match(/^\W{1}./)
+           line = line[1..line.length-1]
+         end
          if line.valid?
-           puts line
            log_entry(line)
          else
            port, ip = Socket.unpack_sockaddr_in(get_peername)

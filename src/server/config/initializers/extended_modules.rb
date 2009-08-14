@@ -9,6 +9,7 @@ USEMEMCACHE = YAML::load(File.open(RAILS_ROOT + "/config/cistern.yml"))['usememc
 class String
   def valid?
     part = self.split('__1_CC')
+    puts part[0]
     if Digest::MD5.hexdigest(part[0]) == part[1]
       return true
     else
