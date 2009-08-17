@@ -40,11 +40,11 @@ module CollectionServer
       static = Staticentry.find(Digest::MD5.hexdigest(map['data'] + map['logtype_id'].to_s))
     end
     event = static.events.new
-    event.etime = map['etime']
-    event.loglevel_id = map['loglevel_id']
+    event.etime = map['etime'].to_i
+    event.loglevel_id = map['loglevel_id'].to_i
     event.payload = map['payload']
-    event.logtype_id = map['logtype_id']
-    event.agent_id = map['agent_id']
+    event.logtype_id = map['logtype_id'].to_i
+    event.agent_id = map['agent_id'].to_i
     if check_key(Agent.find(map['agent_id']), map['authkey'])
       event.save
     else

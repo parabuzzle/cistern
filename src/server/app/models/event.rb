@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   belongs_to :loglevel
   
   cattr_reader :per_page
-  @@per_page = 20
+  @@per_page = 50
   
   default_scope :order => 'etime DESC'
   

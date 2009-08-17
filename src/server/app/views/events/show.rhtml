@@ -3,6 +3,7 @@
 <div class="adendem"><%=link_to("clear filters", :action => "show", :loglevel => nil)%></div>
 <%end%>
 <div id="events">
+
 <% for event in @events do %>
 	<div class="event">
 		<a href="#" onclick="$('.eventinfo<%=event.id%>').toggle();return false"><%= if params[:withepoch] then event.etime else Time.at(event.etime.to_f) end %></a> : <%= link_to(h(event.loglevel.name), :action => "show", :loglevel => event.loglevel.id, :withepoch => params[:withepoch])%> :: 
@@ -14,6 +15,7 @@
 		</div>
 	</div>
 <%end%>
+
 </div>
 
 <div class="pagination">
