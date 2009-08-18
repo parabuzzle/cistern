@@ -1,0 +1,30 @@
+<h1>Statistics</h1>
+<div class="loglevelstats">
+	<h2>Events by loglevel</h2>
+	<div class="info">FATAL: <%=Event.count(:conditions => "loglevel_id = 1")%></div>
+	<div class="info">ERROR: <%=Event.count(:conditions => "loglevel_id = 2")%></div>
+	<div class="info">WARN: <%=Event.count(:conditions => "loglevel_id = 3")%></div>
+	<div class="info">INFO: <%=Event.count(:conditions => "loglevel_id = 4")%></div>
+	<div class="info">DEBUG: <%=Event.count(:conditions => "loglevel_id = 5")%></div>
+	<div class="info">UNKNOWN: <%=Event.count(:conditions => "loglevel_id = 6")%></div>
+</div>
+
+<div id="events">
+	<div class="info">There are currently <%=@eventscount%> total events</div>
+	<div class="info">Spread across <%=@logtypescount%> logtype(s) and <%=@agentscount%> agent(s)</div>
+	<div class="info"><There are <%=@staticscount%> unique static entries</div>
+</div>
+<h2>Agent Breakdown</h2>
+<ul>
+<% for agent in @agents do %>
+	<li><%= agent.name%>: <%=agent.events.count%> total events</li>
+<%end%>
+</ul>
+<h2>Logtype Breakdown</h2>
+<ul>
+<% for type in @logtypes do %>
+	<li><%=type.name%>: <%=type.events.count%> total events</li>
+<%end%>
+</ul>
+
+<div class="clear"></div>
