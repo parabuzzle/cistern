@@ -11,4 +11,13 @@ class Logtype < ActiveRecord::Base
     ActiveRecord::Base.connection.execute("insert into agents_logtypes (logtype_id,agent_id)values('#{self.id}','#{agent.id}')")
     return agent
   end
+  
+  def del
+    static = self.staticentries
+    static.each do |s|
+      s.del
+    end
+    self.destory
+  end
+  
 end

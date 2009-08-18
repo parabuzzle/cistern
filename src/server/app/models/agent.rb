@@ -32,6 +32,14 @@ class Agent < ActiveRecord::Base
     end
     return flag
   end
+  
+  def del
+    events = self.events
+    events.each do |e|
+      e.destroy
+    end
+    self.destory
+  end
 
   
 end
