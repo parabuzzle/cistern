@@ -17,4 +17,11 @@ module LogHelper
     e = e + '__1_CC' + Digest::MD5.hexdigest(e) + '__1_EE'
     socket.write(e)
   end
+  
+  def connect
+    @socket = Socket.new( AF_INET, SOCK_STREAM, 0 )
+    sockaddr = Socket.pack_sockaddr_in( serverport, serverhost )
+    @socket.connect( sockaddr )
+  end
+  
 end
