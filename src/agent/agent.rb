@@ -7,6 +7,7 @@ require 'yaml'
 require 'digest/md5'
 require 'commands.rb'
 require 'lib/sender_base.rb'
+require 'timeout'
 include LogHelper
 include AgentCommands
 include File::Tail
@@ -19,13 +20,11 @@ bindip = CONFIG['agent']['bindip']
 authkey = CONFIG['agent']['key']
 agent_id = CONFIG['agent']['agent_id']
 
-serverhost = CONFIG['server']['hostname']
-serverport = CONFIG['server']['port']
+@serverhost = CONFIG['server']['hostname']
+@serverport = CONFIG['server']['port']
 
-@socket = Socket.new( AF_INET, SOCK_STREAM, 0 )
-sockaddr = Socket.pack_sockaddr_in( serverport, serverhost )
-@socket.connect( sockaddr )
 
+@socket = initialize_socket(@serverport, @serverhost)
 
 
 CONFIG['logtypes'].each do |l,logtype|
