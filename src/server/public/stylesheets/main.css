@@ -244,3 +244,11 @@ a:hover {
 	background: #FF9;
 	border: 1px solid #000;
 }
+
+.loglevelstats {
+	float: right;
+	background: #CCC;
+	color: #333;
+	padding: 8px;
+	border: 1px solid #000;
+}

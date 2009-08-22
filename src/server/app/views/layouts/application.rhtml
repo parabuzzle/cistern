@@ -26,7 +26,7 @@
 			<%= link_to("Agents", :controller => "agents", :action => "index")%> 
 			<%= link_to("Logtypes", :controller => "logtypes", :action => "index")%> 
 			<%= link_to("Search", :controller => "search", :action => "index")%> 
-			<!-- <%= link_to("Stats", :controller => "stats", :action => "index")%> -->
+			<%= link_to("Stats", :controller => "stats", :action => "index")%>
 		</div>
 		<div id="main">
 			<% if flash[:notice]%>
@@ -46,10 +46,10 @@
 		<% if ENV["RAILS_ENV"] == "development" #call this block if in dev mode %>
 		<!-- Dev stuff -->
 		<div id="debug">
-		<a href='#' onclick="$('#params_debug_info').toggle();return false">params</a> |
-		<a href='#' onclick="$('#session_debug_info').toggle();return false">session</a> |
-		<a href='#' onclick="$('#env_debug_info').toggle();return false">env</a> |
-		<a href='#' onclick="$('#request_debug_info').toggle();return false">request</a>
+		<a href='#' onclick="$('#params_debug_info').toggle();return false;">params</a> |
+		<a href='#' onclick="$('#session_debug_info').toggle();return false;">session</a> |
+		<a href='#' onclick="$('#env_debug_info').toggle();return false;">env</a> |
+		<a href='#' onclick="$('#request_debug_info').toggle();return false;">request</a>
 		<fieldset id="params_debug_info" class="debug_info" style="display:none">
 		<legend>params</legend>
 		<%= debug(params) %>

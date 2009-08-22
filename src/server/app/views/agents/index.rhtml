@@ -7,7 +7,7 @@
 <% for agent in @agents do%>
 <%online = is_agent_online?(agent.hostname, agent.port)%>
 <div class="agent">
-	<%=if online then image_tag("serverup.png", :alt => "agent is up") else image_tag("serverdown.png", :alt => "agent listener down")end%><a href='#' onclick="$('.agentinfo<%=agent.id%>').toggle();return false"><%= h agent.name%></a> : <%=link_to("View Events", :action=>"show", :id=>agent.id)%> 
+	<%=if online then image_tag("serverup.png", :alt => "agent is up") else image_tag("serverdown.png", :alt => "agent listener down")end%><a href='#' onclick="$('.agentinfo<%=agent.id%>').toggle();return false;"><%= h agent.name%></a> : <%=link_to("View Events", :action=>"show", :id=>agent.id)%> 
 	<%= if !online then "(agent listener is offline)" end%>
 	<div class="agentinfo<%=agent.id%>" style="display:none; margin-left:30px; background:#FF9; padding: 3px; border: 1px solid #000">
 		<div class="subnav" style="width:200px;">

@@ -37,7 +37,7 @@ CONFIG['logtypes'].each do |l,logtype|
       log.interval = 1
       log.backward(0)
       puts "tailing #{logtype['logfile']} with logmodel #{logtype['modelname']}"
-      log.tail { |line| send_event(line, @socket, authkey, logtype['logtype_id'], agent_id) }
+      log.tail { |line| send_event(line, authkey, logtype['logtype_id'], agent_id) }
     end   
   }
 end

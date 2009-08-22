@@ -12,4 +12,12 @@ class Staticentry < ActiveRecord::Base
     self.id = Digest::MD5.hexdigest(self.data + self.logtype_id.to_s)
   end
   
+  def del
+    events = self.events
+    event.each do |e|
+      e.destory
+    end
+    self.destroy
+  end
+  
 end

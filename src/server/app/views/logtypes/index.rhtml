@@ -6,7 +6,7 @@
 
 <% for type in @logtypes do%>
 <div class="agent">
-	<a href='#' onclick="$('.typeinfo<%=type.id%>').toggle();return false"><%=h type.name%></a> : <%=link_to("View Events", :action=>"show", :id=>type.id)%>
+	<a href='#' onclick="$('.typeinfo<%=type.id%>').toggle();return false;"><%=h type.name%></a> : <%=link_to("View Events", :action=>"show", :id=>type.id)%>
 	<div class="typeinfo<%=type.id%>" style="display:none; background:#FF9; padding: 3px; border: 1px solid #000">
 		<div class="info">Description: <%=h type.description%></div>
 		<div class="info">Total Events: <%= type.events.count %></div>

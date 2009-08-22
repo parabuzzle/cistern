@@ -2,6 +2,8 @@ server:
     hostname: 127.0.0.1
     connection: tcp
     port: 9845
+    retry: 3
+    timeout: 3
 
 agent:
     listenport: 9846
@@ -15,8 +17,8 @@ logtypes:
         modelname: SysLogModel
         logtype_id: 1
         logfile: /var/log/system.log
-    authlog:
-        modelfile: syslog.rb
-        modelname: SysLogModel
-        logtype_id: 2
-        logfile: /var/log/secure.log
+#    authlog:
+#        modelfile: syslog.rb
+#        modelname: SysLogModel
+#        logtype_id: 2
+#        logfile: /var/log/secure.log

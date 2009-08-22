@@ -45,10 +45,20 @@ module CollectionServer
     event.payload = map['payload']
     event.logtype_id = map['logtype_id'].to_i
     event.agent_id = map['agent_id'].to_i
-    if check_key(Agent.find(map['agent_id']), map['authkey'])
-      event.save
-    else
-      ActiveRecord::Base.logger.debug "Event dropped -- invalid agent authkey sent"
+    begin
+      a = Agent.find(map['agent_id'])
+      l = Logtype.find(map['logtype_id'])
+      if a.logtypes.member?(l)
+        if check_key(a, map['authkey']) 
+          event.save
+        else
+          ActiveRecord::Base.logger.error "Event dropped -- invalid agent authkey sent for #{a.name}"
+        end
+      else
+        ActiveRecord::Base.logger.error "Event dropped -- Agent #{a.name} is not a member of logtype #{l.name}"
+      end
+    rescue ActiveRecord::RecordNotFound
+      ActiveRecord::Base.logger.error "Event dropped -- invalid agent_id or logtype_id specified"
     end
     port, ip = Socket.unpack_sockaddr_in(get_peername)
     host = Socket.getaddrinfo(ip, 0, Socket::AF_UNSPEC, Socket::SOCK_STREAM, nil, Socket::AI_CANONNAME)[0][2]

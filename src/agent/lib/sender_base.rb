@@ -1,5 +1,5 @@
 module LogHelper
-  def send_event(entry, socket, authkey, logtype_id, agent_id)
+  def send_event(entry, authkey, logtype_id, agent_id)
     event = Hash.new
     e = String.new
     entry = entry.chomp  
@@ -19,7 +19,7 @@ module LogHelper
       if @socket == false
         raise Errno::EPIPE
       end
-      socket.write(e)
+      @socket.write(e)
     rescue Errno::EPIPE
       puts "server is not responding, dropping event"
       @socket = initialize_socket(@serverport, @serverhost)
@@ -43,5 +43,4 @@ module LogHelper
       puts "server connection timeout"
     end
   end
-  
 end
