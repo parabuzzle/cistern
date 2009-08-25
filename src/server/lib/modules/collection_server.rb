@@ -53,12 +53,15 @@ module CollectionServer
           event.save
         else
           ActiveRecord::Base.logger.error "Event dropped -- invalid agent authkey sent for #{a.name}"
+          send_data "ackerr1"
         end
       else
         ActiveRecord::Base.logger.error "Event dropped -- Agent #{a.name} is not a member of logtype #{l.name}"
+        send_data "ackerr2"
       end
     rescue ActiveRecord::RecordNotFound
       ActiveRecord::Base.logger.error "Event dropped -- invalid agent_id or logtype_id specified"
+      send_data "ackerr3"
     end
     port, ip = Socket.unpack_sockaddr_in(get_peername)
     host = Socket.getaddrinfo(ip, 0, Socket::AF_UNSPEC, Socket::SOCK_STREAM, nil, Socket::AI_CANONNAME)[0][2]
@@ -81,10 +84,12 @@ module CollectionServer
          end
          if line.valid?
            log_entry(line)
+           send_data "ackok"
          else
            port, ip = Socket.unpack_sockaddr_in(get_peername)
            host = Socket.getaddrinfo(ip, 0, Socket::AF_UNSPEC, Socket::SOCK_STREAM, nil, Socket::AI_CANONNAME)[0][2]
            ActiveRecord::Base.logger.error "Dropped log entry from #{host} - checksum invalid"
+           send_data "ackerr0"
          end
        end
      end
