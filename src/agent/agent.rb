@@ -13,6 +13,8 @@ include AgentCommands
 include File::Tail
 include Socket::Constants
 
+CISTERN_VERSION = '0.0.1'
+
 CONFIG = YAML::load(File.open("config.yml"))
 
 port = CONFIG['agent']['listenport']
